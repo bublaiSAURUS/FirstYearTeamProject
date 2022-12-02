@@ -9,6 +9,73 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
 	<title>Wolfram Beeta</title>
+
+	<script type="text/javascript">
+		function updateScreen() {
+			for (var i = 1 ;i <= 6; i++) {
+				document.getElementById("variable" + i).style.display = "none";
+				document.getElementById("variable" + i + "_l").style.display = "none";
+			}
+			for (var i = 1 ;i <= document.getElementById("variables").value; i++) {
+				document.getElementById("variable" + i).style.display = "inline";
+				document.getElementById("variable" + i + "_l").style.display = "inline";
+			}
+			document.getElementById("constants").style.display = "inline";
+			document.getElementById("constants_l").style.display = "inline";
+			document.getElementById("form_values").style.display = "inline";
+			document.getElementById("readinput").style.display = "inline";
+			return false
+		}
+
+		function readInput(){
+			var variablesList = []
+			for (var i = 0 ;i < document.getElementById("variables").value; i++) {
+				var coefficientList = []
+				for (var j = 1 ;j <= document.getElementById("variables").value; j++) {
+					var coefficients = document.getElementById("variable" + j).value
+					var coefficients_split = coefficients.split(",")
+					coefficientList.push(coefficients_split[i])
+				}
+				variablesList.push(coefficientList)
+			}
+			var constantsList = document.getElementById("constants").value.split(",")
+			var variableNames = ["x1","x2","x3","x4","x5","x6"]
+			for (var i = 0 ;i < document.getElementById("variables").value; i++) {
+				var equation = ""
+				for (var j = 0 ;j < document.getElementById("variables").value; j++) {
+					if (variablesList[i][j] != 0) 
+					{
+						if (variablesList[i][j] == 1)
+						{
+							equation += variableNames[j] + " + "
+						}
+						else 
+						{
+							equation += variablesList[i][j] + variableNames[j] + " + "
+						}	
+					}
+				}
+				equation = equation.slice(0, -2)
+				equation += "= " +  constantsList[i]
+				document.getElementById("equation" + i).innerHTML = equation
+				document.getElementById("equation" + i).style.display = "inline";
+			}
+			document.getElementById("solve").style.display = "inline";
+			var convertedVariables = ""
+			for (var i = 0 ;i < document.getElementById("variables").value; i++) {
+				convertedVariables += variablesList[i] + "."
+			}
+			convertedVariables = convertedVariables.slice(0,-1)
+			createCookie("variables",convertedVariables)
+			createCookie("constants",constantsList)
+			return false
+		}
+
+		function createCookie(name, value) {
+			document.cookie =  name + "=" + value;
+		}
+
+	</script>
 </head>
 
 
@@ -25,7 +92,37 @@
 		</ul>
 	</navbar>
 	<main>
-		<p>Stuff for linear equation solver (hopefully implemented before the real presentation)</p>
+		<form id = "form_variables" onsubmit="return updateScreen()">
+			<label for="variables">How many variables? (1-6):</label> 
+			<input type="text" id="variables" name="variables"><br><br>
+			<input type="submit" id = "submit" value="Submit"><br><br>			
+		</form>
+		<form style="display: none;" id = "form_values" onsubmit="return readInput()">
+			<label style="display: none;" for="variable1" id="variable1_l" >Enter x1 coefficients:</label>
+			<input style="display: none;"  type="text" id="variable1" name="variable1"><br><br>
+			<label style="display: none;"  for="variable2" id="variable2_l" >Enter x2 coefficients:</label>
+			<input style="display: none;"  type="text" id="variable2" name="variable2"><br><br>				
+			<label style="display: none;"  for="variable3" id="variable3_l">Enter x3 coefficients:</label>
+			<input style="display: none;"  type="text" id="variable3" name="variable3"><br><br>
+			<label style="display: none;"  for="variable4" id="variable4_l">Enter x4 coefficients:</label>
+			<input style="display: none;"  type="text" id="variable4" name="variable4"><br><br>
+			<label style="display: none;"  for="variable5" id="variable5_l">Enter x5 coefficients:</label>
+			<input style="display: none;"  type="text" id="variable5" name="variable5"><br><br>
+			<label style="display: none;"  for="variable6" id="variable6_l">Enter x6 coefficients:</label>
+			<input style="display: none;"  type="text" id="variable6" name="variable6"><br><br>
+			<label style="display: none;"  for="constants" id="constants_l">Enter constants:</label>
+			<input style="display: none;"  type="text" id="constants" name="constants"><br><br>
+			<input style="display: none;"  type="submit" id = "readinput" value="Submit"><br><br>
+		</form> 
+		<p id = equation0> </p><br><br>
+		<p id = equation1> </p><br><br>
+		<p id = equation2> </p><br><br>
+		<p id = equation3> </p><br><br>
+		<p id = equation4> </p><br><br>
+		<p id = equation5> </p><br><br>
+		<form id = solve style="display: none;" action="linear.php">
+			<input type="submit" value="Solve system of equations" />
+		</form>
 	</main>
 </body>
 

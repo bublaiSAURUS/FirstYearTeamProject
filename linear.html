@@ -16,6 +16,8 @@
 			for (var i = 1; i <= 6; i++) {
 				document.getElementById("variable" + i).style.display = "none";
 				document.getElementById("variable" + i + "_l").style.display = "none";
+				document.getElementById("equation" + (i-1).toString()).innerHTML = ""
+
 			}
 			for (var i = 1; i <= document.getElementById("variables").value; i++) {
 				document.getElementById("variable" + i).style.display = "inline";

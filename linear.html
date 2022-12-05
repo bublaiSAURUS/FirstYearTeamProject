@@ -30,17 +30,12 @@
 
 		function readInput() {
 			var variablesList = []
-			for (var i = 0; i < document.getElementById("variables").value; i++) {
-				var coefficientList = []
-				for (var j = 1; j <= document.getElementById("variables").value; j++) {
-					var coefficients = document.getElementById("variable" + j).value
-					var coefficients_split = coefficients.split(",")
-					coefficientList.push(coefficients_split[i])
-				}
-				variablesList.push(coefficientList)
+			for (var i = 1; i <= document.getElementById("variables").value; i++) {
+				var coefficients = document.getElementById("variable" + i).value
+				variablesList.push(coefficients.split(","))
 			}
 			var constantsList = document.getElementById("constants").value.split(",")
-			var variableNames = ["x1", "x2", "x3", "x4", "x5", "x6"]
+			var variableNames = ["x", "y", "z", "a", "b", "c"]
 			for (var i = 0; i < document.getElementById("variables").value; i++) {
 				var equation = ""
 				for (var j = 0; j < document.getElementById("variables").value; j++) {
@@ -54,8 +49,8 @@
 					}
 				}
 				equation = equation.slice(0, -2)
-				equation += "= " + constantsList[i]
-				document.getElementById("equation" + i).innerHTML = equation
+				equation += "= " + constantsList[i] 
+				document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation 
 				document.getElementById("equation" + i).style.display = "inline";
 			}
 			document.getElementById("solve").style.display = "inline";
@@ -94,37 +89,40 @@
 			<label for="variables">How many variables?&nbsp;&nbsp;
 
 				<span>(1-6):</span></label>
-			<div>
-				<input type="text" placeholder="Enter the no. of variables" id="variables" name="variables"><br><br>
-				<input type="submit" id="submit" value="Submit"><br><br>
+			<div><br><br>
+				<input type="text" placeholder="Enter the no. of variables" id="variables" name="variables">
+				<input type="submit" id="submit" value="Submit">
 			</div>
 		</form>
 		<form style="display: none;" id="form_values" onsubmit="return readInput()">
-			<label style="display: none;" for="variable1" id="variable1_l">Enter x1 coefficients:</label>
-			<input style="display: none;" type="text" id="variable1" name="variable1"><br><br>
-			<label style="display: none;" for="variable2" id="variable2_l">Enter x2 coefficients:</label>
-			<input style="display: none;" type="text" id="variable2" name="variable2"><br><br>
-			<label style="display: none;" for="variable3" id="variable3_l">Enter x3 coefficients:</label>
-			<input style="display: none;" type="text" id="variable3" name="variable3"><br><br>
-			<label style="display: none;" for="variable4" id="variable4_l">Enter x4 coefficients:</label>
-			<input style="display: none;" type="text" id="variable4" name="variable4"><br><br>
-			<label style="display: none;" for="variable5" id="variable5_l">Enter x5 coefficients:</label>
-			<input style="display: none;" type="text" id="variable5" name="variable5"><br><br>
-			<label style="display: none;" for="variable6" id="variable6_l">Enter x6 coefficients:</label>
-			<input style="display: none;" type="text" id="variable6" name="variable6"><br><br>
-			<label style="display: none;" for="constants" id="constants_l">Enter constants:</label>
-			<input style="display: none;" type="text" id="constants" name="constants"><br><br>
-			<input style="display: none;" type="submit" id="readinput" value="Submit"><br><br>
+			<label style="display: none;" for="variable1" id="variable1_l">Enter equation 1 coefficients:</label>
+			<input style="display: none;" type="text" id="variable1" name="variable1"> 
+			<label style="display: none;" for="variable2" id="variable2_l"> <br><br> Enter equation 2 coefficients:</label>
+			<input style="display: none;" type="text" id="variable2" name="variable2"> 
+			<label style="display: none;" for="variable3" id="variable3_l"> <br><br> Enter equation 3 coefficients:</label>
+			<input style="display: none;" type="text" id="variable3" name="variable3"> 
+			<label style="display: none;" for="variable4" id="variable4_l"> <br><br> Enter equation 4 coefficients:</label>
+			<input style="display: none;" type="text" id="variable4" name="variable4"> 
+			<label style="display: none;" for="variable5" id="variable5_l"> <br><br> Enter equation 5 coefficients:</label>
+			<input style="display: none;" type="text" id="variable5" name="variable5"> 
+			<label style="display: none;" for="variable6" id="variable6_l"> <br><br> Enter equation 6 coefficients:</label>
+			<input style="display: none;" type="text" id="variable6" name="variable6"> 
+			<label style="display: none;" for="constants" id="constants_l"> <br><br> Enter constants:</label>
+			<input style="display: none;" type="text" id="constants" name="constants">
+			<br><br> 
+			<input style="display: none;" type="submit" id="readinput" value="Submit"> 
 		</form>
-		<p id=equation0> </p><br><br>
-		<p id=equation1> </p><br><br>
-		<p id=equation2> </p><br><br>
-		<p id=equation3> </p><br><br>
-		<p id=equation4> </p><br><br>
-		<p id=equation5> </p><br><br>
+		<p style="display: none;" id=equation0> </p> 
+		<p style="display: none;" id=equation1> </p> 
+		<p style="display: none;" id=equation2> </p> 
+		<p style="display: none;" id=equation3> </p> 
+		<p style="display: none;" id=equation4> </p> 
+		<p style="display: none;" id=equation5> </p> 
 		<form id=solve style="display: none;" action="linear.php">
+			<br><br>
 			<input type="submit" value="Solve system of equations" />
 		</form>
+		<p>test</p>
 	</main>
 </body>
 

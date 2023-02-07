@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang ="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="myStyles.css">
+    <link rel="stylesheet" type="text/css" href="/css/myStyles.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,25 +11,25 @@
 </head>
     <body>
         <div class="header">
-            <img id="logo" src="resources/images/logo.png" alt="website logo">
+            <img id="logo" src="/images/logo.png" alt="website logo">
             <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
         </div>
         <navbar>
             <ul>
-                <li><a  href="index.html">Home</a></li>
-                <li><a class="active" href="solve.html">Solve</a></li>
-                <li><a href="docs.html">Docs</a></li>
+                <li><a  href="/">Home</a></li>
+                <li><a class="active" href="solve">Solve</a></li>
+                <li><a href="docs">Docs</a></li>
             </ul>
         </navbar>
         <main>
             <?php
             $variables = $_COOKIE["variables"];
-            $constants = $_COOKIE["constants"];   
+            $constants = $_COOKIE["constants"];
             ini_set('display_errors', '1');
             $host = "dbhost.cs.man.ac.uk";
             $username = "g89496oe";
             $password = "esabatad";
-            $dbName = "2022_comp10120_m6"; 
+            $dbName = "2022_comp10120_m6";
             try
             {
             $conn = new PDO("mysql:host=$host", $username, $password);
@@ -51,7 +51,7 @@
             'variables' => $variables,
             'constants' => $constants,
             ]);
-            ?>           
+            ?>
         </main>
     </body>
 </html>

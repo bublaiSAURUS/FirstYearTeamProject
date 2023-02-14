@@ -2,7 +2,7 @@
 <html lang="en">
 	<!-- Arrow by Aybige from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a> -->
 <head>
-	<link rel="stylesheet" type="text/css" href="/resources/css/myStyles.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
 
 <body>
 	<div class="header">
-		<img id="logo" src="/resources/images/logo.png" alt="website logo">
+		<img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
 		<h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
 	</div>
 	<navbar>

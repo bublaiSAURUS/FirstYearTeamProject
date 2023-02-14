@@ -26,6 +26,6 @@ def linearSolve():
     variableList = variables.split(".")
     for i in range(len(variableList)):
         variableList[i] = variableList[i].split(",")
-    return "These are the variables: " + variables + ". And these are the constants: " + constants
+    return "These are the variables: " + variables + " and these are the constants: " + constants
 if __name__ == '__main__':
     app.run(debug=True)

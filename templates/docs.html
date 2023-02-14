@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Arrow by Aybige from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a> -->
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+	<title>Wolfram Beeta</title>
+</head>
+
+<body>
+	<div class="header">
+		<img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
+		<h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
+	</div>
+	<navbar>
+		<ul>
+			<li><a  href="/">Home</a></li>
+			<li><a href="solve">Solve</a></li>
+			<li><a class="active" href="docs">Docs</a></li>
+		</ul>
+	</navbar>
+</body>
+
+</html>

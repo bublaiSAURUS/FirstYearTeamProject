@@ -61,22 +61,15 @@
 				convertedVariables += variablesList[i] + "."
 			}
 			convertedVariables = convertedVariables.slice(0, -1)
-			//createCookie("variables", convertedVariables)
-			//createCookie("constants", constantsList)
-			var xhr = new XMLHttpRequest();
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify({
-                variables: convertedVariables,
-                constants: constantsList
-             }));
-            xhr.onload = function() {
-                var data = JSON.parse(this.responseText);
-                console.log(data);
-            };
+			try{
+	            createCookie("variables", convertedVariables)
+				createCookie("constants", constantsList)
+	        }
+	        catch(err){
+	        	alert(err.message)
+	        }
 			return false
 		}
-
 		function createCookie(name, value) {
 			document.cookie = name + "=" + value;
 		}

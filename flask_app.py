@@ -1,6 +1,4 @@
 
-# A very simple Flask Hello World app for you to get started with...
-
 from flask import Flask, render_template, make_response, request
 
 app = Flask(__name__)
@@ -15,16 +13,19 @@ def solve():
 @app.route('/docs')
 def docs():
     return render_template('docs.html')
-@app.route('/linear')
+@app.route('/linear',methods = ['POST','GET'])
 def linear():
     resp = make_response(render_template('linear.html'))
     resp.set_cookie('variables', 'test')
     resp.set_cookie('constants', 'test2')
     return resp
-@app.route('/linearSolve')
+@app.route('/linearSolve',methods = ['POST', 'GET'])
 def linearSolve():
     variables = request.cookies.get('variables')
     constants = request.cookies.get('constants')
-    return variables + " are the variables, these are the constants " + constants
+    variableList = variables.split(".")
+    for i in range(len(variableList)):
+        variableList[i] = variableList[i].split(",")
+    return "These are the variables: " + variables + ". And these are the constants: " + constants
 if __name__ == '__main__':
     app.run(debug=True)

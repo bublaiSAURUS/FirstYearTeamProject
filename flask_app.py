@@ -24,6 +24,7 @@ def linearSolve():
     variables = request.cookies.get('variables')
     constants = request.cookies.get('constants')
     variableList = variables.split(".")
+    constantsList = constants.split(",")
     for i in range(len(variableList)):
         variableList[i] = variableList[i].split(",")
     return "These are the variables: " + variables + " and these are the constants: " + constants

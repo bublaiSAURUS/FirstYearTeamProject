@@ -1,6 +1,5 @@
-
 from flask import Flask, render_template, make_response, request
-
+from linearSystem import LinearSystem
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
@@ -23,10 +22,15 @@ def linear():
 def linearSolve():
     variables = request.cookies.get('variables')
     constants = request.cookies.get('constants')
-    variableList = variables.split(".")
+    print(variables)
+    variableList = variables.split("-")
     constantsList = constants.split(",")
     for i in range(len(variableList)):
         variableList[i] = variableList[i].split(",")
-    return "These are the variables: " + variables + " and these are the constants: " + constants
+        for j in range(len(variableList[i])):
+            variableList[i][j] = float(variableList[i][j])
+        constantsList[i] = float(constantsList[i])
+    l = LinearSystem(variableList,constantsList)
+    return list(l.solve_linear_system())
 if __name__ == '__main__':
     app.run(debug=True)

@@ -32,5 +32,45 @@ def linearSolve():
         constantsList[i] = float(constantsList[i])
     l = LinearSystem(variableList,constantsList)
     return list(l.solve_linear_system())
+@app.route('/nonLinear',methods = ['POST','GET'])
+def nonLinear():
+    resp = make_response(render_template('nonLinear.html'))
+    resp.set_cookie('variables', 'test')
+    resp.set_cookie('constants', 'test2')
+    return resp
+@app.route('/nonLinearSolve',methods = ['POST', 'GET'])
+def nonLinearSolve():
+    variables = request.cookies.get('variables')
+    constants = request.cookies.get('constants')
+    print(variables)
+    variableList = variables.split("-")
+    constantsList = constants.split(",")
+    for i in range(len(variableList)):
+        variableList[i] = variableList[i].split(",")
+        for j in range(len(variableList[i])):
+            variableList[i][j] = float(variableList[i][j])
+        constantsList[i] = float(constantsList[i])
+    l = LinearSystem(variableList,constantsList)
+    return list(l.solve_linear_system())
+@app.route('/ODE',methods = ['POST','GET'])
+def ODE():
+    resp = make_response(render_template('ODE.html'))
+    resp.set_cookie('variables', 'test')
+    resp.set_cookie('constants', 'test2')
+    return resp
+@app.route('/ODESolve',methods = ['POST', 'GET'])
+def ODESolve():
+    variables = request.cookies.get('variables')
+    constants = request.cookies.get('constants')
+    print(variables)
+    variableList = variables.split("-")
+    constantsList = constants.split(",")
+    for i in range(len(variableList)):
+        variableList[i] = variableList[i].split(",")
+        for j in range(len(variableList[i])):
+            variableList[i][j] = float(variableList[i][j])
+        constantsList[i] = float(constantsList[i])
+    l = LinearSystem(variableList,constantsList)
+    return list(l.solve_linear_system())
 if __name__ == '__main__':
     app.run(debug=True)

@@ -9,15 +9,36 @@
 
 
 <body>
-    <div class="header">
+      <section id="results_page">
+        <div class="header">
+          <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
+          <div class="m6_name">
+            <a href="/" style="text-decoration: none;"><h2 id="brand_name">Wolfram <br> Beeta</h2></a>
+          </div>
+          <navbar>
+            <ul class="navbar-menu -material">
+              <li class="item" href="#docs"><a class="link" href="#docs">Docs</a></li>
+              <li class="item" href="#about"><a class="link" href="#about">About us</a></li>
+              <li class="item" href="#contact"><a class="link" href="#contact">Contact</a></li>
+            </ul>
+          </navbar>
+          <!-- <div class="menu-toggle">
+            <i class="bx bx-menu"></i>
+            <i class="bx bx-x"></i>
+            </div> -->
+          <div class="login">
+            <button>Log in</button>
+          </div>
+        </div>
+    
     <!-- will need to change the src of the img when I work since the path is different on my laptop. Change it back when you do-->
-		<img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
+		<!-- <img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
 		<h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
 
     </div>
     <div class="main">
       <h1 style="color:#FFAA00;">Your Equation</h1>
-    </div>
-    
+    </div> --> -->
+
 </body>
 </html>

@@ -23,7 +23,7 @@ def linearSolve():
     variables = request.cookies.get('variables')
     constants = request.cookies.get('constants')
     print(variables)
-    variableList = variables.split("-")
+    variableList = variables.split("&")
     constantsList = constants.split(",")
     for i in range(len(variableList)):
         variableList[i] = variableList[i].split(",")
@@ -43,15 +43,14 @@ def nonLinearSolve():
     variables = request.cookies.get('variables')
     constants = request.cookies.get('constants')
     print(variables)
-    variableList = variables.split("-")
+    variableList = variables.split("&")
     constantsList = constants.split(",")
     for i in range(len(variableList)):
         variableList[i] = variableList[i].split(",")
         for j in range(len(variableList[i])):
             variableList[i][j] = float(variableList[i][j])
         constantsList[i] = float(constantsList[i])
-    l = LinearSystem(variableList,constantsList)
-    return list(l.solve_linear_system())
+    return variableList
 @app.route('/ODE',methods = ['POST','GET'])
 def ODE():
     resp = make_response(render_template('ODE.html'))
@@ -60,17 +59,18 @@ def ODE():
     return resp
 @app.route('/ODESolve',methods = ['POST', 'GET'])
 def ODESolve():
-    variables = request.cookies.get('variables')
-    constants = request.cookies.get('constants')
-    print(variables)
-    variableList = variables.split("-")
-    constantsList = constants.split(",")
-    for i in range(len(variableList)):
-        variableList[i] = variableList[i].split(",")
-        for j in range(len(variableList[i])):
-            variableList[i][j] = float(variableList[i][j])
-        constantsList[i] = float(constantsList[i])
-    l = LinearSystem(variableList,constantsList)
-    return list(l.solve_linear_system())
+    coefficients = request.cookies.get('coefficients')
+    initialConditions = request.cookies.get('initialConditions')
+    initialConditionsList = initialConditions.split('&')
+    initialConditionsDict = {}
+    for initialCondition in initialConditionsList:
+        values = initialCondition.split(",")
+        for i in range(len(values)):
+            values[i] = float(values[i])
+        initialConditionsDict[values[0]] = values[1:]
+    coefficientsList = coefficients.split(",")
+    for i in range(len(coefficientsList)):
+        coefficientsList[i] = float(coefficientsList[i])
+    return initialConditionsDict
 if __name__ == '__main__':
     app.run(debug=True)

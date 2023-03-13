@@ -27,6 +27,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <section id="landing_page">
         <div class="header">
             <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
@@ -92,6 +93,33 @@
             </div>
         </div>
     </section>
+=======
+    <div class="header">
+        <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
+        <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
+    </div>
+    <navbar>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a class="active" href="solve">Solve</a></li>
+            <li><a href="docs">Docs</a></li>
+        </ul>
+    </navbar>
+    <div class="buttons-for-mvp">
+        <a href="linear">
+            <button>Solve Linear Equation</button>
+        </a>
+        <a href="nonLinear">
+            <button>Solve Non-Linear Equation</button>
+        </a>
+        <a href="ODE">
+            <button>Solve ODEs</button>
+        </a>
+        <a>
+            <button>Solve PDEs</button>
+        </a>
+    </div>
+>>>>>>> 5902aeefc9c806dde5bc73ac244d023de72da4fb
 </body>
 
 </html>

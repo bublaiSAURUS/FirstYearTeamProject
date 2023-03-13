@@ -1,12 +1,8 @@
-#results_page{
-    background-color: #6B2C91;
-
-
-}
 
 body{
     font-family: "Montserrat";
     overflow-x: hidden;
+    background-color: #6B2C91;
   }
 html {
     scroll-behavior: smooth;
@@ -80,6 +76,69 @@ navbar ul li a {
     padding: 10em;
     text-transform: uppercase;
 }
+.your_equation{
+    font-family: "Monserrat";
+    margin-top: 1em;
+    margin-left: 1em; 
+    color: black;
+    font-size: 4em;
+    letter-spacing: 1px;
+     text-align: center; 
+}
+.equation_box{
+    position: relative;
+    width: 1000px;
+    height: 300px;
+    margin: 0px;
+    background-color: lightgray;
+    border: 2px solid #FFAA00;
+    padding: 0px;
+    margin-left: 35em;
+    
+}
+.content{
+    font-family: "Monserrat";
+    text-align: center;
+    color: black;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+    line-height: 0.4em;
+    
+
+
+}
+
+.result{
+    font-family: "Monserrat";
+    margin-top: 1em;
+    margin-left: 1em;
+    color: black;
+    font-size: 4em;
+    letter-spacing: 1px;
+     text-align: center; 
+}
+.results_box{
+    position: relative;
+    width: 1000px;
+    height: 300px;
+    margin: 0px;
+    background-color: lightgray;
+    border: 2px solid #FFAA00;
+    padding: 0px;
+    margin-left: 35em; 
+    
+}
+.contents{
+    font-family: "Monserrat";
+    text-align: center;
+    color: black;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+    line-height: 0.4em;
+    /* margin-right: 10em; */
+
+}
+
 
 /* div.header{
     background-color:#6B2C91;  

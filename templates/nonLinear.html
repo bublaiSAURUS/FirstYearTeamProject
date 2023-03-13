@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Arrow by Aybige from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a> -->
+
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+	<title>Wolfram Beeta</title>
+
+	<script type="text/javascript">
+
+		function readInput() {
+			var variablesList = []
+			for (var i = 1; i <= 2; i++) {
+				var coefficients = document.getElementById("variable" + i).value
+				variablesList.push(coefficients.split(","))
+			}
+			var constantsList = document.getElementById("constants").value.split(",")
+			document.getElementById("solve").style.display = "inline";
+			var convertedVariables = ""
+			for (var i = 0; i < 2; i++) {
+				convertedVariables += variablesList[i] + "&"
+			}
+			convertedVariables = convertedVariables.slice(0, -1)
+			try{
+	            createCookie("variables", convertedVariables)
+				createCookie("constants", constantsList)
+	        }
+	        catch(err){
+	        	alert(err.message)
+	        }
+			return false
+		}
+		function createCookie(name, value) {
+			document.cookie = name + "=" + value;
+		}
+
+	</script>
+</head>
+
+
+<body>
+	<div class="header">
+		<img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
+		<h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
+	</div>
+	<navbar>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a class="active" href="solve">Solve</a></li>
+			<li><a href="docs">Docs</a></li>
+		</ul>
+	</navbar>
+	<main style="text-align: center;">
+		<form  id="form_values" onsubmit="return readInput()">
+			<label style="color: white;" for="variable1" id="variable1_l"> <br><br>Enter equation 1 coefficients:</label>
+			<input style="" type="text" id="variable1" name="variable1">
+			<label style="color: white;" for="variable2" id="variable2_l"> <br><br> Enter equation 2 coefficients:</label>
+			<input style="" type="text" id="variable2" name="variable2">
+			<label style="color: white;" for="constants" id="constants_l"> <br><br> Enter constants:</label>
+			<input style="" type="text" id="constants" name="constants">
+			<input style=";" type="submit" id="readinput" value="Submit">
+		</form>
+		<form id=solve style="display: none;" action="nonLinearSolve">
+			<br><br>
+			<input type="submit" value="Solve system of equations" />
+		</form>
+	</main>
+</body>
+
+</html>

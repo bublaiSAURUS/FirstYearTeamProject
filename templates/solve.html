@@ -1,42 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Arrow by Aybige from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a> -->
 
 <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/solve.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500;600&family=Zen+Dots&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+
+    <script>
+        $('.js-input').keyup(function () {
+            if ($(this).val()) {
+                $(this).addClass('not-empty');
+            } else {
+                $(this).removeClass('not-empty');
+            }
+        });
+    </script>
     <title>Wolfram Beeta</title>
 </head>
 
 <body>
-    <div class="header">
-        <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
-        <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
-    </div>
-    <navbar>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a class="active" href="solve">Solve</a></li>
-            <li><a href="docs">Docs</a></li>
-        </ul>
-    </navbar>
-    <div class="buttons-for-mvp">
-        <a href="linear">
-            <button>Solve Linear Equation</button>
-        </a>
-        <a href="nonLinear">
-            <button>Solve Non-Linear Equation</button>
-        </a>
-        <a href="ODE">
-            <button>Solve ODEs</button>
-        </a>
-        <a>
-            <button>Solve PDEs</button>
-        </a>
-    </div>
+    <section id="landing_page">
+        <div class="header">
+            <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
+            <div class="brand_title">
+                <a href="/" style="text-decoration: none;">
+                    <h2 id="brand_name">Wolfram <br> Beeta</h2>
+                </a>
+            </div>
+            <navbar>
+                <ul class="navbar-menu -material">
+                    <li class="item"><a class="link" href="{{ url_for('index') + '#docs'}}">Docs</a></li>
+                    <li class="item"><a class="link" href="{{ url_for('index') + '#about'}}">About us</a></li>
+                    <li class="item"><a class="link" href="{{ url_for('index') + '#contact'}}">Contact</a></li>
+                </ul>
+            </navbar>
+            <!-- <div class="menu-toggle">
+				<i class="bx bx-menu"></i>
+				<i class="bx bx-x"></i>
+			  </div> -->
+            <div class="login">
+                <button>Log in</button>
+            </div>
+        </div>
+    </section>
+    <section id="body">
+        <div class="grid">
+            <div class="grid__item">
+                <div class="card"><img class="card__img"
+                        src="{{ url_for('static',filename='images/linear.svg' ) }}"
+                        alt="Linear">
+                    <div class="card__content">
+                        <h1 class="card__header">Linear Equations</h1>
+                        <p class="card__text">A linear equation is an algebraic equation of the form y=mx+b. involving
+                            only a constant and a first-order (linear) term, where m is the slope and b is the
+                            y-intercept. </p>
+                        <button class="card__btn"><a href="{{ url_for('linear') }}" style="text-decoration: none;">Solve</a><span>&rarr;</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__item">
+                <div class="card"><img class="card__img"
+                        src="{{ url_for('static',filename='images/nlinear.svg' ) }}"
+                        alt="Non-linear">
+                    <div class="card__content">
+                        <h1 class="card__header">Non-linear Equations</h1>
+                        <p class="card__text">A non-linear equation is such which does not form a straight line. It
+                            looks like a curve in a graph and has a variable slope value.</p>
+                        <button class="card__btn"><a href="{{ url_for('linear') }}" style="text-decoration: none;">Solve</a><span> <span>&rarr;</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__item">
+                <div class="card"><img class="card__img"
+                        src="{{ url_for('static',filename='images/linear.svg' ) }}"
+                        alt="ODEs">
+                    <div class="card__content">
+                        <h1 class="card__header">ODEs</h1>
+                        <p class="card__text">An ordinary differential equation (ODE) is a differential equation whose unknown(s) consists of one (or more) function(s) of one variable and involves the derivatives of those functions.</p>
+                        <button class="card__btn"><a href="{{ url_for('linear') }}" style="text-decoration: none;">Solve <span>&rarr;</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>

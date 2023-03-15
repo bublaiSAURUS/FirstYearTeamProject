@@ -13,6 +13,10 @@ html {
       scroll-behavior: auto;
     }
   }
+  #results_page {
+    background-color: #6B2C91;
+}
+
 
 
 .header {
@@ -24,10 +28,13 @@ html {
     margin-right: 0;
 }
 .m6_name {
-    line-height: 1.3;
-    height: 100%;
-    text-align: center;
-    margin-top: 1.5em;
+    
+    margin-top: 0.2em;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    letter-spacing: 2px;
+
 }
 #logo {
     height: 4.5em;
@@ -35,13 +42,13 @@ html {
     margin-top: 1em;
 }
 
-#m6_name:hover,
+#brand_name:hover,
 .header h2:hover {
     color: #FFAA00;
     cursor: pointer;
     transition: color 0.5s;
 }
-#m6_name,
+#brand_name,
 .header h2 {
     font-family: "Montserrat";
     margin-top: 0.2em;
@@ -108,12 +115,68 @@ navbar ul li a {
     display: inline-block;
     padding: 1em;
 }
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+    flex-direction: column;
+
+}
+#main .desc {
+    font-family: "Zen Dots";
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    font-size: 5em;
+    color: white;
+}
+#main button {
+    background-color: #FFAA00;
+    border: 0;
+    font-family: "lato";
+    border-radius: 5px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    padding: 0.5em 0.7em;
+    cursor: pointer;
+}
+#main button::after {
+    content: "\27A6";
+    color:#000;
+    padding-right:8px;
+  }
+
+
+
+.login button{
+    background-color: #6B2C91;
+    color: #FFAA00;
+    border: 2px solid #FFAA00;
+    font-family: "Montserrat";
+    text-transform: uppercase;
+    border-radius: 5px;
+    letter-spacing: 3px;
+    font-size: 1em;
+    padding: 0.4em 0.6em;
+    cursor: pointer;
+    margin-left: 10vw;
+    margin-top: 3.5vh;
+}
+
+
+.login button:hover{
+    background-color: #FFAA00;
+    color: white;
+    transition-timing-function: cubic-bezier(.17,.67,.83,.67);
+    transition: all 300ms;
+}
 
 .your_equation{
     font-family: "Monserrat";
-    margin-top: 1em;
-    margin-left: 1em; 
-    color: black;
+    margin-top: 3em;
+    margin-left: 0.7em; 
+    color: #FFAA00;
     font-size: 4em;
     letter-spacing: 1px;
      text-align: center; 
@@ -126,7 +189,7 @@ navbar ul li a {
     background-color: lightgray;
     border: 2px solid #FFAA00;
     padding: 0px;
-    margin-left: 35em;
+    margin-left: 14em;
     
 }
 .content{
@@ -144,8 +207,8 @@ navbar ul li a {
 .result{
     font-family: "Monserrat";
     margin-top: 1em;
-    margin-left: 1em;
-    color: black;
+    margin-left: 0.7em;
+    color: #FFAA00;
     font-size: 4em;
     letter-spacing: 1px;
      text-align: center; 
@@ -158,7 +221,7 @@ navbar ul li a {
     background-color: lightgray;
     border: 2px solid #FFAA00;
     padding: 0px;
-    margin-left: 35em; 
+    margin-left: 14em; 
     
 }
 .contents{

@@ -1,12 +1,29 @@
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="ResultsPage.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ResultsPage.css') }}">
     <meta charset="UTF-8">
     
     <title>Results</title>
 
 </head>
-
+<script type="text/javascript">
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  alert(getCookie("variables"));
+</script>
 
 <body>
       <section id="results_page">

@@ -58,7 +58,7 @@
 			document.getElementById("solve").style.display = "inline";
 			var convertedVariables = ""
 			for (var i = 0; i < document.getElementById("variables").value; i++) {
-				convertedVariables += variablesList[i] + "-"
+				convertedVariables += variablesList[i] + "&"
 			}
 			convertedVariables = convertedVariables.slice(0, -1)
 			try{

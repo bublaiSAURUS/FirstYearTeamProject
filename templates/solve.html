@@ -54,21 +54,20 @@
     <section id="body">
         <div class="grid">
             <div class="grid__item">
-                <div class="card"><img class="card__img"
-                        src="{{ url_for('static',filename='images/linear.svg' ) }}"
+                <div class="card"><img class="card__img" src="{{ url_for('static',filename='images/linear.svg' ) }}"
                         alt="Linear">
                     <div class="card__content">
                         <h1 class="card__header">Linear Equations</h1>
                         <p class="card__text">A linear equation is an algebraic equation of the form y=mx+b. involving
                             only a constant and a first-order (linear) term, where m is the slope and b is the
                             y-intercept. </p>
-                        <button class="card__btn"><a href="{{ url_for('linear') }}" style="text-decoration: none;">Solve</a><span>&rarr;</span></button>
+                        <a href="{{ url_for('linear') }}" style="text-decoration: none;"><button
+                                class="card__btn">Solve<span>&rarr;</span></button></a>
                     </div>
                 </div>
             </div>
             <div class="grid__item">
-                <div class="card"><img class="card__img"
-                        src="{{ url_for('static',filename='images/nlinear.svg' ) }}"
+                <div class="card"><img class="card__img" src="{{ url_for('static',filename='images/nlinear.svg' ) }}"
                         alt="Non-linear">
                     <div class="card__content">
                         <h1 class="card__header">Non-linear Equations</h1>
@@ -79,8 +78,7 @@
                 </div>
             </div>
             <div class="grid__item">
-                <div class="card"><img class="card__img"
-                        src="{{ url_for('static',filename='images/linear.svg' ) }}"
+                <div class="card"><img class="card__img" src="{{ url_for('static',filename='images/linear.svg' ) }}"
                         alt="ODEs">
                     <div class="card__content">
                         <h1 class="card__header">ODEs</h1>

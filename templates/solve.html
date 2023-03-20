@@ -73,8 +73,7 @@
                         <h1 class="card__header">Non-linear Equations</h1>
                         <p class="card__text">A non-linear equation is such which does not form a straight line. It
                             looks like a curve in a graph and has a variable slope value.</p>
-                        <a href="{{ url_for('linear') }}" style="text-decoration: none;"><button
-                                class="card__btn">Solve<span>&rarr;</span></button></a>
+                        <button class="card__btn"><a href="{{ url_for('nonLinear') }}" style="text-decoration: none;">Solve</a><span> <span>&rarr;</span></button>
                     </div>
                 </div>
             </div>
@@ -83,11 +82,8 @@
                         alt="ODEs">
                     <div class="card__content">
                         <h1 class="card__header">ODEs</h1>
-                        <p class="card__text">An ordinary differential equation (ODE) is a differential equation whose
-                            unknown(s) consists of one (or more) function(s) of one variable and involves the
-                            derivatives of those functions.</p>
-                        <button class="card__btn"><a href="{{ url_for('linear') }}" style="text-decoration: none;">Solve
-                                <span>&rarr;</span></button>
+                        <p class="card__text">An ordinary differential equation (ODE) is a differential equation whose unknown(s) consists of one (or more) function(s) of one variable and involves the derivatives of those functions.</p>
+                        <button class="card__btn"><a href="{{ url_for('ODE') }}" style="text-decoration: none;">Solve <span>&rarr;</span></button>
                     </div>
                 </div>
             </div>

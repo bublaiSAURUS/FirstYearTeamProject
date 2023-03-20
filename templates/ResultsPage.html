@@ -1,8 +1,12 @@
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ResultsPage.css') }}">
-    <meta charset="UTF-8">
-    
+  <link rel="stylesheet" type="text/css" href="/Applications/XAMPP/xamppfiles/htdocs/m6_website/static/css/ResultsPage.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+   
     <title>Results</title>
 
 </head>
@@ -25,18 +29,28 @@
   alert(getCookie("variables"));
 </script>
 
+
 <body>
       <section id="results_page">
         <div class="header">
-          <img id="logo" src="\static\images\logo.png" alt="website logo">
+          <img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
           <div class="m6_name">
             <a href="/" style="text-decoration: none;"><h2 id="brand_name">Wolfram <br> Beeta</h2></a>
           </div>
+
+          <label class="hamburger-menu">
+            <input type="checkbox">
+          </label>
+
+
           <navbar>
             <ul class="navbar-menu -material">
-              <li class="item" href="#docs"><a class="link" href="#docs">Home</a></li>
-              <li class="item" href="#about"><a class="link" href="#about">About us</a></li>
-              <li class="item" href="#contact"><a class="link" href="#contact">Contact</a></li>
+                <li class="item"><a class="link" href="{{ url_for('index') + '#docs'}}">Docs</a></li>
+                <li class="item"><a class="link" href="{{ url_for('index') + '#about'}}">About us</a></li>
+                <li class="item"><a class="link" href="{{ url_for('index') + '#contact'}}">Contact</a></li>
+            </ul>
+
+           
             </ul>
           </navbar>
           <!-- <div class="menu-toggle">
@@ -56,12 +70,12 @@
           <div class="content">
             <p>2x + 3y = 5</p>
             <p>6x + 8y = 12</p>
-            <p>Need help with JS</p> 
-            
-            
-            
+            <p>Need help with JS</p>
+           
+           
+           
           </div>
-          
+         
         </div>
         <div class="result">
           <p>Your Solutions</p>
@@ -70,21 +84,18 @@
           <div class="contents">
             <p>x = 12</p>
             <p>y = 4</p>
-            <p>Need help with JS</p> 
-            
-            
-            
+            <p>Need help with JS</p>
+           
+           
+           
           </div>
-          
-        </div>
-        <div class="save_button">
-          <button>SAVE</button>
+         
         </div>
       </section>
-    
+   
     <!-- will need to change the src of the img when I work since the path is different on my laptop. Change it back when you do-->
-		<!-- <img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
-		<h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
+    <!-- <img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
+    <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
 
     </div>
     <div class="main">

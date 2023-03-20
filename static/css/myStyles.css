@@ -144,3 +144,7 @@ navbar ul li a:active {
 #form_variables div{
     display: flex;
 }
+#solve {
+    font-size: 25em;
+
+}

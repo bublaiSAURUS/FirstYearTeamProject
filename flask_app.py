@@ -20,7 +20,7 @@ def linear():
     return resp
 @app.route('/linearSolve',methods = ['POST', 'GET'])
 def linearSolve():
-    resp = make_response(render_template('ResultsPage.html'))
+    resp = make_response(render_template('linearSolve.html'))
     variables = request.cookies.get('variables').replace(",","@")
     constants = request.cookies.get('constants').replace(",","@")
     variableList = variables.split("&")

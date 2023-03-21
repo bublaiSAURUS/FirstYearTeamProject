@@ -3,7 +3,7 @@
 <!-- Arrow by Aybige from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a> -->
 
 <head>
-	<link rel="stylesheet" type="text/css" href="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\css\myStyles.css">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,7 +126,7 @@
 		<form id=solve style="display: none;" action="linearSolve">
 			<br><br>
 			<!-- <input type="submit" value="Solve system of equations" /> -->
-			<a href="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\templates\ResultsPage.html">Solve system of equations</a>
+			<input type="submit" value="Solve system of equations" />
 		</form>
 	</main>
 </body>

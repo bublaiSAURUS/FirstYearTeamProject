@@ -204,8 +204,8 @@ navbar ul li a {
 
 .your_equation{
     font-family: "Montserrat";
-    margin-top: 6em;
-    margin-right: 27em;
+    margin-top: 5em;
+    margin-right: 22em;
     color: #FFAA00;
     font-size: 3em;
     letter-spacing: 1px;
@@ -219,14 +219,14 @@ navbar ul li a {
     background-color: lightgray;
     border: 2px solid #FFAA00;
     padding: 0px;
-    margin-right: 45em;
+    margin-right: 30em;
    
 }
 .content{
     font-family: "Montserrat";
     text-align: center;
     color: black;
-    font-size: 3em;
+    font-size: 2em;
     letter-spacing: 1px;
     line-height: 0.4em;
    
@@ -237,7 +237,7 @@ navbar ul li a {
 .result{
     font-family: "Monserrat";
     margin-top: 1em;
-    margin-right: 30em;
+    margin-right: 25em;
     color: #FFAA00;
     font-size: 3em;
     letter-spacing: 1px;
@@ -251,14 +251,14 @@ navbar ul li a {
     background-color: lightgray;
     border: 2px solid #FFAA00;
     padding: 0px;
-    margin-right: 45em;
+    margin-right: 30em;
    
 }
 .contents{
     font-family: "Monserrat";
     text-align: center;
     color: black;
-    font-size: 3em;
+    font-size: 2em;
     letter-spacing: 1px;
     line-height: 0.4em;
     /* margin-right: 10em; */

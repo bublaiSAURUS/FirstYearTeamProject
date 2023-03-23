@@ -10,24 +10,6 @@
     <title>Results</title>
 
 </head>
-<script type="text/javascript">
-  function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
-  alert(getCookie("variables"));
-</script>
 
 
 <body>
@@ -68,12 +50,17 @@
         </div>
         <div class="equation_box">
           <div class="content">
-            <p>2x + 3y = 5</p>
-            <p>6x + 8y = 12</p>
-            <p>6x + 8y = 12</p>
-            <p>6x + 8y = 12</p>
-            <p>6x + 8y = 12</p>
-            <p>6x + 8y = 12</p>
+            <p style="color: black;" id=equation0> </p>
+            <p style="color: black;" id=equation1> </p>
+            <p style="color: black;" id=equation2> </p>
+            <p style="color: black;" id=equation3> </p>
+            <p style="color: black;" id=equation4> </p>
+            <p style="color: black;" id=equation5> </p>
+            <br>
+            <br>
+            <br>
+           
+
             
            
            
@@ -86,12 +73,17 @@
         </div>
         <div class="results_box">
           <div class="contents">
-            <p>x = 12</p>
-            <p>y = 4</p>
-            <p>y = 4</p>
-            <p>y = 4</p>
-            <p>y = 4</p>
-            <p>y = 4</p>
+            
+            <p style="color: black;" id=solution0> </p>
+            <p style="color: black;" id=solution1> </p>
+            <p style="color: black;" id=solution2> </p>
+            <p style="color: black;" id=solution3> </p>
+            <p style="color: black;" id=solution4> </p>
+            <p style="color: black;" id=solution5> </p>
+            <br>
+            <br>
+            <br>
+            
            
            
            
@@ -99,6 +91,7 @@
          
         </div>
       </section>
+    
    
     <!-- will need to change the src of the img when I work since the path is different on my laptop. Change it back when you do-->
     <!-- <img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
@@ -108,6 +101,87 @@
     <div class="main">
       <h1 style="color:#FFAA00;">Your Equation</h1>
     </div> --> 
+    <script type="text/javascript">
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      // alert(getCookie("variables"));
+      // alert(getCookie("constants"));
+      // alert(getCookie("solution"));
+      
+      // alert('hhs');
+      var constantsList = getCookie("constants").replace(/['"]+/g, '').split('@')
+      var variablesList = getCookie("variables").replace(/['"]+/g, '').split('&')
+      // alert(variablesList)
+      for (var i = 0; i < (variablesList.length); i++) {
+        variablesList[i] = variablesList[i].split('@')
+      }
+       var variableNames = ["x", "y", "z", "a", "b", "c"]
+       for (var i = 0; i < (variablesList.length); i++) {
+        var equation = ""
+        for (var j = 0; j < (variablesList.length); j++) {
+          if (variablesList[i][j] != 0) {
+            if (variablesList[i][j] == 1) {
+              equation += variableNames[j] + " + "
+            }
+            else {
+              equation += variablesList[i][j] + variableNames[j] + " + "
+            }
+          }
+        }
+        equation = equation.slice(0, -2)
+        equation += "= " + constantsList[i]
+        
+        // document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
+        // document.getElementById("equation" + i).style.display = "inline";
+        try{
+          document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
+          document.getElementById("equation" + i).style.display = "inline";   
+              }
+              catch(err){
+                alert(err.message)
+              }
+    
+        //  alert('hello')
+       }
+
+       var solutionsList = getCookie('solution').replace(/['"]+/g, '').split('@');
+       for (var i = 0; i < (solutionsList.length); i++) {
+        
+        document.getElementById("solution" + i).innerHTML =   "<br><br>" + variableNames[i] + " = " + solutionsList[i]; 
+        document.getElementById("solution" + i).style.display = "inline"; 
+      }
+      
+      // document.getElementById("solve").style.display = "inline";
+    
+      // var convertedVariables = ""
+      // for (var i = 0; i < getCookie("variables").value; i++) {
+      //   convertedVariables += variablesList[i] + "&"
+      // }
+      // convertedVariables = convertedVariables.slice(0, -1)
+      // try{
+      //         createCookie("variables", convertedVariables)
+      //   createCookie("constants", constantsList)
+      //     }
+      //     catch(err){
+      //       alert(err.message)
+      //     }
+      // return false
+        // }
+     </script>
+    
 
 </body>
 </html>

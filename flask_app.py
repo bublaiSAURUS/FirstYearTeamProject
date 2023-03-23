@@ -80,6 +80,7 @@ def ODE():
     return resp
 @app.route('/ODESolve',methods = ['POST', 'GET'])
 def ODESolve():
+    resp = make_response(render_template('ODESolve.html'))
     coefficients = request.cookies.get('coefficients')
     initialConditions = request.cookies.get('initialConditions')
     initialConditionsList = initialConditions.split('&')
@@ -92,7 +93,33 @@ def ODESolve():
     coefficientsList = coefficients.split(",")
     for i in range(len(coefficientsList)):
         coefficientsList[i] = float(coefficientsList[i])
-    return initialConditionsDict
+    x = sp.Symbol("x")
+    f = sp.Function("f")(x)
+    n = len(initialConditionsDict)
+    diff_eq = sp.Eq(coefficientsList[0]*f.diff(x,x)+coefficientsList[1]*f.diff(x)+coefficientsList[2]*f,0)
+    ics={}
+    for key in initialConditionsDict:
+        if key==0:
+            ics.update({f.subs(x,initialConditionsDict[key][0]):initialConditionsDict[key][1]})
+        if key==1:
+            ics.update({f.diff().subs(x,initialConditionsDict[key][0]):initialConditionsDict[key][1]})
+        if key==2:
+            ics.update({f.diff(x,x).subs(x,initialConditionsDict[key][0]):initialConditionsDict[key][1]})
+    ivp = sp.dsolve(diff_eq,ics = ics).rhs
+    ans = str(ivp)
+    s = ""
+    if("**" in ans):
+        s = ans.replace("**","^")
+    elif("exp"in ans):
+        s = ans.replace("exp","e^")
+    else:
+        s = ans
+    solution = "f(x)=" + s
+    resp.set_cookie('coefficients', coefficients)
+    resp.set_cookie('initialConditions', initialConditions)
+    resp.set_cookie('solution',solution)
+    print(solution)
+    return resp
 @app.route('/PDE',methods = ['POST','GET'])
 def PDE():
     resp = make_response(render_template('PDE.html'))
@@ -131,3 +158,5 @@ def PDESolve():
     return resp
 if __name__ == '__main__':
     app.run(debug=True)
+
+

@@ -46,33 +46,6 @@ def nonLinear():
     resp.set_cookie('variables', 'test')
     resp.set_cookie('constants', 'test2')
     return resp
-@app.route('/nonLinear',methods = ['POST','GET'])
-def nonLinear():
-    resp = make_response(render_template('nonLinear.html'))
-    resp.set_cookie('variables', 'test')
-    resp.set_cookie('constants', 'test2')
-    return resp
-@app.route('/nonLinearSolve',methods = ['POST', 'GET'])
-def nonLinearSolve():
-    resp = make_response(render_template('nonLinearSolve.html'))
-    variables = request.cookies.get('variables')
-    constants = request.cookies.get('constants')
-    print(variables)
-    variableList = variables.split("&")
-    constantsList = constants.split(",")
-    for i in range(len(variableList)):
-        variableList[i] = variableList[i].split(",")
-        for j in range(len(variableList[i])):
-            variableList[i][j] = float(variableList[i][j])
-        constantsList[i] = float(constantsList[i])
-    l = LinearSystem(variableList,constantsList)
-    return list(l.solve_linear_system())
-@app.route('/nonLinear',methods = ['POST','GET'])
-def nonLinear():
-    resp = make_response(render_template('nonLinear.html'))
-    resp.set_cookie('variables', 'test')
-    resp.set_cookie('constants', 'test2')
-    return resp
 @app.route('/nonLinearSolve',methods = ['POST', 'GET'])
 def nonLinearSolve():
     resp = make_response(render_template('nonLinearSolve.html'))

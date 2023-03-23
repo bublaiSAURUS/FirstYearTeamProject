@@ -24,6 +24,37 @@ def linear():
     return resp
 @app.route('/linearSolve',methods = ['POST', 'GET'])
 def linearSolve():
+    resp = make_response(render_template('linearSolve.html'))
+    variables = request.cookies.get('variables').replace(",","@")
+    constants = request.cookies.get('constants').replace(",","@")
+    variableList = variables.split("&")
+    constantsList = constants.split("@")
+    for i in range(len(variableList)):
+        variableList[i] = variableList[i].split("@")
+        for j in range(len(variableList[i])):
+            variableList[i][j] = float(variableList[i][j])
+        constantsList[i] = float(constantsList[i])
+    l = LinearSystem(variableList,constantsList)
+    resp.set_cookie('variables', variables)
+    resp.set_cookie('constants', constants)
+    solutions = ','.join(str(x) for x in list(l.solve_linear_system()))
+    resp.set_cookie('solution',solutions.replace(",","@"))
+    return resp
+@app.route('/nonLinear',methods = ['POST','GET'])
+def nonLinear():
+    resp = make_response(render_template('nonLinear.html'))
+    resp.set_cookie('variables', 'test')
+    resp.set_cookie('constants', 'test2')
+    return resp
+@app.route('/nonLinear',methods = ['POST','GET'])
+def nonLinear():
+    resp = make_response(render_template('nonLinear.html'))
+    resp.set_cookie('variables', 'test')
+    resp.set_cookie('constants', 'test2')
+    return resp
+@app.route('/nonLinearSolve',methods = ['POST', 'GET'])
+def nonLinearSolve():
+    resp = make_response(render_template('nonLinearSolve.html'))
     variables = request.cookies.get('variables')
     constants = request.cookies.get('constants')
     print(variables)
@@ -159,5 +190,4 @@ def PDESolve():
     return resp
 if __name__ == '__main__':
     app.run(debug=True)
-
 

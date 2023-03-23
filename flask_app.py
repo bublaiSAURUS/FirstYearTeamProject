@@ -1,7 +1,7 @@
 from flask import Flask, render_template, make_response, request
 from sympy.solvers import pdsolve
 from sympy.abc import x, y
-from sympy import Function, pprint
+from sympy import Function, pprint, symbols
 from linearSystem import LinearSystem
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -84,11 +84,11 @@ def PDE():
 def PDESolve():
     resp = make_response(render_template('PDESolve.html'))
     variables = request.cookies.get('variables')
-    print(variables)
     variableList = variables.split("&")
     for i in range(len(variableList)):
         variableList[i] = float(variableList[i])
     #return variableList
+    x,y = symbols("x,y")
     f = Function('f')
     u = f(x,y)
     ux = u.diff(x)
@@ -96,7 +96,8 @@ def PDESolve():
     a = variableList[0]
     b = variableList[1]
     c = variableList[2]
-    genform = a*ux + b*uy + c
+    genform = a*u + b*ux + c*uy
+    pprint(genform)
     x = str(pdsolve(genform))
     y = x[3:len(x)-1]
     t = y.replace('exp','e^')

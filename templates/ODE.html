@@ -66,7 +66,32 @@
 					document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
 					document.getElementById("equation" + i).style.display = "inline";
 				}
-				equation = coefficientsList[0] + " d<sup>2x/dy " + coefficientsList[1] " dx/dy " + coefficientsList[2] + " x = 0" 
+				equation = "";
+				if (coefficientsList[0] != 0) {
+						if (coefficientsList[0] == 1) {
+							equation += " d<sup>2</sup>x/dy<sup>2</sup> + "
+						}
+						else {
+							equation += coefficientsList[0] + " d<sup>2</sup>x/dy<sup>2</sup> + "
+						}
+					}
+				if (coefficientsList[1] != 0) {
+						if (coefficientsList[1] == 1) {
+							equation += " dx/dy + "
+						}
+						else {
+							equation += coefficientsList[1] + " dx/dy + "
+						}
+					}
+				if (coefficientsList[2] != 0) {
+						if (coefficientsList[2] == 1) {
+							equation += " x "
+						}
+						else {
+							equation += coefficientsList[2] + " x "
+						}
+					}
+				equation += " = 0"
 				document.getElementById("equation" + document.getElementById("initialConditions").value).innerHTML =   "<br><br>" + equation
 				document.getElementById("equation" + document.getElementById("initialConditions").value).style.display = "inline";
 	            createCookie("coefficients", coefficientsList)

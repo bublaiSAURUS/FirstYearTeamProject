@@ -52,6 +52,48 @@
 				initialConditions = initialConditions.slice(0,-1)
 				var coefficientsList = document.getElementById("coefficients").value.split(",")
 				document.getElementById("solve").style.display = "inline";
+				var initialConditionsList = initialConditions.split("&");
+				for (var i = 0; i < initialConditionsList.length;i++){
+					initialConditionsList[i] = initialConditionsList[i].split(",");
+				}
+				for (var i = 0; i <= document.getElementById("initialConditions").value - 1; i++) {
+					var equation = ""
+					equation += "f";
+					for (var j = 0; j < parseInt(initialConditionsList[i][0]) ; j++) {
+						equation += "'"
+					}
+					equation += "(" + initialConditionsList[i][1] + ") = " + initialConditionsList[i][2]
+					document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
+					document.getElementById("equation" + i).style.display = "inline";
+				}
+				equation = "";
+				if (coefficientsList[0] != 0) {
+						if (coefficientsList[0] == 1) {
+							equation += " d<sup>2</sup>x/dy<sup>2</sup> + "
+						}
+						else {
+							equation += coefficientsList[0] + " d<sup>2</sup>x/dy<sup>2</sup> + "
+						}
+					}
+				if (coefficientsList[1] != 0) {
+						if (coefficientsList[1] == 1) {
+							equation += " dx/dy + "
+						}
+						else {
+							equation += coefficientsList[1] + " dx/dy + "
+						}
+					}
+				if (coefficientsList[2] != 0) {
+						if (coefficientsList[2] == 1) {
+							equation += " x "
+						}
+						else {
+							equation += coefficientsList[2] + " x "
+						}
+					}
+				equation += " = 0"
+				document.getElementById("equation" + document.getElementById("initialConditions").value).innerHTML =   "<br><br>" + equation
+				document.getElementById("equation" + document.getElementById("initialConditions").value).style.display = "inline";
 	            createCookie("coefficients", coefficientsList)
 				createCookie("initialConditions", initialConditions)
 	        }
@@ -111,10 +153,13 @@
 			<input style="display: none;" type="text" id="initialConditions3" name="initialConditions3">
 			<input style="display: none;" type="submit" id="readinput" value="Submit">
 		</form>
-
+		<p style="display: none;color: white;" id=equation0> </p>
+		<p style="display: none;color: white;" id=equation1> </p>
+		<p style="display: none;color: white;" id=equation2> </p>
+		<p style="display: none;color: white;" id=equation3> </p>
 		<form id=solve style="display: none;" action="ODESolve">
 			<br><br>
-			<input type="submit" value="Solve system of equations" />
+			<input type="submit" value="Solve ordinary differential equation"/>
 		</form>
 	</main>
 </body>

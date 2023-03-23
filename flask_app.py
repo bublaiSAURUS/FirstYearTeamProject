@@ -72,5 +72,18 @@ def ODESolve():
     for i in range(len(coefficientsList)):
         coefficientsList[i] = float(coefficientsList[i])
     return initialConditionsDict
+@app.route('/PDE',methods = ['POST','GET'])
+def PDE():
+    resp = make_response(render_template('PDE.html'))
+    resp.set_cookie('variables', 'test')
+    return resp
+@app.route('/PDESolve',methods = ['POST','GET'])
+def PDESolve():
+    variables = request.cookies.get('variables')
+    print(variables)
+    variableList = variables.split("&")
+    for i in range(len(variableList)):
+        variableList[i] = float(variableList[i])
+    return variableList
 if __name__ == '__main__':
     app.run(debug=True)

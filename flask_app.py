@@ -68,6 +68,7 @@ def nonLinearSolve():
         for i in range(len(variableList)):
             functionList.append(sp.Eq(variableList[i][0]*x**2+variableList[i][1]*x,constantsList[i]))
         solution = sp.solve(functionList,(x))
+    print('&'.join(str(x) for x in solution))
     resp.set_cookie('solution','&'.join(str(x) for x in solution))
     resp.set_cookie('variables', variables)
     resp.set_cookie('constants', constants)

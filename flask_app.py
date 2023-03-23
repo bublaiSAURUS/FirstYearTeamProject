@@ -1,4 +1,7 @@
 from flask import Flask, render_template, make_response, request
+from sympy.solvers import pdsolve
+from sympy.abc import x, y
+from sympy import Function, pprint, symbols
 from linearSystem import LinearSystem
 import sympy as sp
 app = Flask(__name__)
@@ -41,9 +44,9 @@ def nonLinear():
     return resp
 @app.route('/nonLinearSolve',methods = ['POST', 'GET'])
 def nonLinearSolve():
+    resp = make_response(render_template('nonLinearSolve.html'))
     variables = request.cookies.get('variables')
     constants = request.cookies.get('constants')
-    print(variables)
     variableList = variables.split("&")
     constantsList = constants.split(",")
     for i in range(len(variableList)):
@@ -51,7 +54,24 @@ def nonLinearSolve():
         for j in range(len(variableList[i])):
             variableList[i][j] = float(variableList[i][j])
         constantsList[i] = float(constantsList[i])
-    return variableList
+    x,y,z = sp.symbols("x,y,z")
+    functionList = []
+    if len(variableList) == 3:
+        for i in range(len(variableList)):
+            functionList.append(sp.Eq(variableList[i][0]*x**2+variableList[i][1]*y**2+variableList[i][2]*z**2+variableList[i][3]*x+variableList[i][4]*y+variableList[i][5]*z,constantsList[i]))
+        solution = sp.solve(functionList,(x,y,z))
+    elif len(variableList) == 2:
+        for i in range(len(variableList)):
+            functionList.append(sp.Eq(variableList[i][0]*x**2+variableList[i][1]*y**2+variableList[i][2]*x+variableList[i][3]*y,constantsList[i]))
+        solution = sp.solve(functionList,(x,y))
+    else:
+        for i in range(len(variableList)):
+            functionList.append(sp.Eq(variableList[i][0]*x**2+variableList[i][1]*x,constantsList[i]))
+        solution = sp.solve(functionList,(x))
+    resp.set_cookie('solution','&'.join(str(x) for x in solution))
+    resp.set_cookie('variables', variables)
+    resp.set_cookie('constants', constants)
+    return resp
 @app.route('/ODE',methods = ['POST','GET'])
 def ODE():
     resp = make_response(render_template('ODE.html'))

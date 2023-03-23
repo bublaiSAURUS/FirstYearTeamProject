@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Arrow by Aybige from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a> -->
+
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/solve.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+	href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500;600&family=Zen+Dots&display=swap"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+<style>
+	html, body{
+		background-color:#6B2C91;
+	}
+
+</style>
+<title>Wolfram Beeta</title>
+
+	<script type="text/javascript">
+		function readInput() {
+			try{
+				var coefficients = document.getElementById("variable1").value
+				var variablesList = coefficients.split(",")
+				document.getElementById("solve").style.display = "inline";
+				for (var i = 0; i < 3; i++) {
+					var equation = ""
+					equation += variablesList[0] + " f(x;y) + " + variablesList[1] + " d/dx(f(x;y)) + " + variablesList[2] + " d/dy(f(x;y)) = 0";
+					document.getElementById("equation0" ).innerHTML =   "<br><br>" + equation
+					document.getElementById("equation0" ).style.display = "inline";
+				}
+				var convertedVariables = ""
+				for (var i = 0; i < 3; i++) {
+					convertedVariables += variablesList[i] + "&"
+				}
+				convertedVariables = convertedVariables.slice(0, -1)
+	            createCookie("variables", convertedVariables)
+	        }
+	        catch(err){
+	        	alert(err.message)
+	        }
+			return false
+		}
+		function createCookie(name, value) {
+			document.cookie = name + "=" + value;
+		}
+
+	</script>
+</head>
+
+
+<body>
+	<section id="landing_page">
+		<div class="header">
+			<img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
+			<div class="brand_title">
+				<a href="/" style="text-decoration: none;"><h2 id="brand_name">Wolfram <br> Beeta</h2></a>
+			</div>
+			<navbar>
+				<ul class="navbar-menu -material">
+                    <li class="item"><a class="link" href="{{ url_for('index') + '#docs'}}">Docs</a></li>
+                    <li class="item"><a class="link" href="{{ url_for('index') + '#about'}}">About us</a></li>
+                    <li class="item"><a class="link" href="{{ url_for('index') + '#contact'}}">Contact</a></li>
+				</ul>
+			</navbar>
+			<!-- <div class="menu-toggle">
+				<i class="bx bx-menu"></i>
+				<i class="bx bx-x"></i>
+			  </div> -->
+			<div class="login">
+				<button>Log in</button>
+			</div>
+		</div>
+	<main style="text-align: center;">
+		<form  id="form_values" onsubmit="return readInput()">
+			<label style="color: white;" for="variable1" id="variable1_l"> <br><br>Enter coefficients:</label>
+			<input style="" type="text" id="variable1" name="variable1">
+			<input style="" type="submit" id="readinput" value="Submit">
+		</form>
+		<p style="display: none;color: white;" id=equation0> </p>
+		<form id=solve style="display: none;" action="PDESolve">
+			<br><br>
+			<input type="submit" value="Solve partial derivative equation" />
+		</form>
+	</main>
+</body>
+
+</html>

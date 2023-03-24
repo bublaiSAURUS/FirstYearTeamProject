@@ -57,6 +57,8 @@
 			</p>
 			<a href="{{ url_for('solve') }}" class="button">Start Solving</a>
 			<video class="intro__illustration" width="700" height="400" autoplay loop muted>
+				<source src="{{ url_for('static', filename='images/home.webm') }}" type="video/webm" />
+				<source src="{{ url_for('static', filename='images/home.ogv') }}" type="video/ogg" />
 				<source src="{{ url_for('static', filename='images/home.mp4') }}" type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
@@ -74,7 +76,7 @@
 				</div>
 				<div class="body">
 					<p>Click on the 'Start Solving' button to start solving equations with Wolfram Beeta!</p>
-					<img src="{{ url_for('static', filename='images/sone.png') }}">			
+					<img src="{{ url_for('static', filename='images/sone.png') }}">
 				</div>
 			</div>
 
@@ -99,7 +101,7 @@
 					<h2><span class="small">How to</span> Solve?</h2>
 				</div>
 				<div class="body">
-					<p> - Enter the number of variables.<br> 
+					<p> - Enter the number of variables.<br>
 						- Enter the coefficients of your choice separated by commas. <br>
 						- Enter the constants of your choice also separated by commas. <br>
 						- Follow the same steps for the Non-linear solver.
@@ -136,7 +138,7 @@
 					<h2><span class="small">How to</span> Solve?</h2>
 				</div>
 				<div class="body">
-					<p>	Enter the coefficients of your choice separated by commas and click solve! <br>
+					<p> Enter the coefficients of your choice separated by commas and click solve! <br>
 					</p>
 					<img src="{{ url_for('static', filename='images/spde.png') }}" alt="Graphic">
 				</div>

@@ -19,12 +19,6 @@
           <div class="m6_name">
             <a href="/" style="text-decoration: none;"><h2 id="brand_name">Wolfram <br> Beeta</h2></a>
           </div>
-
-          <!-- <label class="hamburger-menu">
-            <input type="checkbox">
-          </label> -->
-
-
           <navbar>
             <ul class="navbar-menu -material">
                 <li class="item"><a class="link" href="{{ url_for('index') + '#home'}}">Home</a></li>
@@ -35,14 +29,10 @@
            
             </ul>
           </navbar>
-          <!-- <div class="menu-toggle">
-            <i class="bx bx-menu"></i>
-            <i class="bx bx-x"></i>
-            </div> -->
-          <div class="login">
+          <!-- <div class="login">
             <button>Log in</button>
           </div>
-        </div>
+        </div> -->
       </section>
       <section id="main">
         <div class="your_equation">
@@ -59,11 +49,6 @@
             <br>
             <br>
             <br>
-           
-
-            
-           
-           
            
           </div>
          
@@ -82,25 +67,12 @@
             <p style="color: black;" id=solution5> </p>
             <br>
             <br>
-            <br>
-            
-           
-           
+            <br>          
            
           </div>
          
         </div>
       </section>
-    
-   
-    <!-- will need to change the src of the img when I work since the path is different on my laptop. Change it back when you do-->
-    <!-- <img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
-    <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
-
-    </div>
-    <div class="main">
-      <h1 style="color:#FFAA00;">Your Equation</h1>
-    </div> --> 
     <script type="text/javascript">
       function getCookie(cname) {
         let name = cname + "=";
@@ -117,14 +89,8 @@
         }
         return "";
       }
-      // alert(getCookie("variables"));
-      // alert(getCookie("constants"));
-      // alert(getCookie("solution"));
-      
-      // alert('hhs');
       var constantsList = getCookie("constants").replace(/['"]+/g, '').split('@')
       var variablesList = getCookie("variables").replace(/['"]+/g, '').split('&')
-      // alert(variablesList)
       for (var i = 0; i < (variablesList.length); i++) {
         variablesList[i] = variablesList[i].split('@')
       }
@@ -143,9 +109,6 @@
         }
         equation = equation.slice(0, -2)
         equation += "= " + constantsList[i]
-        
-        // document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
-        // document.getElementById("equation" + i).style.display = "inline";
         try{
           document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
           document.getElementById("equation" + i).style.display = "inline";   
@@ -164,22 +127,6 @@
         document.getElementById("solution" + i).style.display = "inline"; 
       }
       
-      // document.getElementById("solve").style.display = "inline";
-    
-      // var convertedVariables = ""
-      // for (var i = 0; i < getCookie("variables").value; i++) {
-      //   convertedVariables += variablesList[i] + "&"
-      // }
-      // convertedVariables = convertedVariables.slice(0, -1)
-      // try{
-      //         createCookie("variables", convertedVariables)
-      //   createCookie("constants", constantsList)
-      //     }
-      //     catch(err){
-      //       alert(err.message)
-      //     }
-      // return false
-        // }
      </script>
     
 

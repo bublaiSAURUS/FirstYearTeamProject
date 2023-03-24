@@ -86,16 +86,16 @@ def ODE():
 @app.route('/ODESolve',methods = ['POST', 'GET'])
 def ODESolve():
     resp = make_response(render_template('ODESolve.html'))
-    coefficients = request.cookies.get('coefficients')
-    initialConditions = request.cookies.get('initialConditions')
+    coefficients = request.cookies.get('coefficients').replace(",","@")
+    initialConditions = request.cookies.get('initialConditions').replace(",","@")
     initialConditionsList = initialConditions.split('&')
     initialConditionsDict = {}
     for initialCondition in initialConditionsList:
-        values = initialCondition.split(",")
+        values = initialCondition.split("@")
         for i in range(len(values)):
             values[i] = float(values[i])
         initialConditionsDict[values[0]] = values[1:]
-    coefficientsList = coefficients.split(",")
+    coefficientsList = coefficients.split("@")
     for i in range(len(coefficientsList)):
         coefficientsList[i] = float(coefficientsList[i])
     x = sp.Symbol("x")
@@ -125,6 +125,7 @@ def ODESolve():
     resp.set_cookie('solution',solution)
     print(solution)
     return resp
+
 @app.route('/PDE',methods = ['POST','GET'])
 def PDE():
     resp = make_response(render_template('PDE.html'))

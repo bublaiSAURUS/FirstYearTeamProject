@@ -1,28 +1,139 @@
-<!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
-    <title>Wolfram Beeta</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ResultsPage.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+   
+    <title>Results</title>
+
 </head>
-    <body>
+
+
+<body>
+      <section id="results_page">
         <div class="header">
-            <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
-            <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
-        </div>
-        <navbar>
-            <ul>
-                <li><a  href="/">Home</a></li>
-                <li><a class="active" href="solve">Solve</a></li>
-                <li><a href="docs">Docs</a></li>
+          <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
+          <div class="m6_name">
+            <a href="/" style="text-decoration: none;"><h2 id="brand_name">Wolfram <br> Beeta</h2></a>
+          </div>
+
+          <!-- <label class="hamburger-menu">
+            <input type="checkbox">
+          </label> -->
+
+
+          <navbar>
+            <ul class="navbar-menu -material">
+                <li class="item"><a class="link" href="{{ url_for('index') + '#home'}}">Home</a></li>
+                <li class="item"><a class="link" href="{{ url_for('index') + '#about'}}">About us</a></li>
+                <li class="item"><a class="link" href="{{ url_for('index') + '#contact'}}">Contact</a></li>
             </ul>
-        </navbar>
-        <main>
-            <p> hello there</p>
-        </main>
-    </body>
+
+           
+            </ul>
+          </navbar>
+          <!-- <div class="menu-toggle">
+            <i class="bx bx-menu"></i>
+            <i class="bx bx-x"></i>
+            </div> -->
+          
+        </div>
+      </section>
+      <section id="main">
+        <div class="your_equation">
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Partial Differential Equation</p>
+        </div>
+        <div class="equation_box">
+          <div class="content">
+          
+            
+            <p style="color: black;" id=equation0> </p>
+            <br>
+            <br>
+            <br>
+           
+
+            
+           
+           
+           
+          </div>
+         
+        </div>
+        <div class="result">
+          <p>Your Solutions</p>
+        </div>
+        <div class="results_box">
+          <div class="contents">
+            <p style="color: black;" id=solution0> </p>
+            
+            <br>
+            <br>
+            <br>
+            
+           
+           
+           
+          </div>
+         
+        </div>
+      </section>
+    
+   
+    <!-- will need to change the src of the img when I work since the path is different on my laptop. Change it back when you do-->
+    <!-- <img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
+    <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
+
+    </div>
+    <div class="main">
+      <h1 style="color:#FFAA00;">Your Equation</h1>
+    </div> --> 
+    <script type="text/javascript">
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      alert(getCookie("variables"));
+      // alert(getCookie("constants"));
+      alert(getCookie("solution"));
+      
+      
+      try{
+       var variablesList = getCookie("variables").replace(/['"]+/g, '').split('&')
+       alert(variablesList)
+
+        var equation = ""
+        equation += variablesList[0] + " f(x;y) + " + variablesList[1] + " d/dx(f(x;y)) + " + variablesList[2] + " d/dy(f(x;y)) = 0";
+        document.getElementById("equation0" ).innerHTML =   "<br><br>" + equation
+        document.getElementById("equation0" ).style.display = "inline";
+        solution = getCookie("solution").replace(/['"]+/g, '').replace('|', ';');
+        document.getElementById("solution0" ).innerHTML =   "<br><br>" + solution;
+        document.getElementById("solution0" ).style.display = "inline";
+        
+      }
+      catch(err){
+        alert(err.message)
+      }
+   
+       
+    
+    
+     </script>
+    
+
+</body>
 </html>

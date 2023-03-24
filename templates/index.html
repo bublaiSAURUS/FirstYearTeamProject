@@ -3,16 +3,13 @@
 <!-- Arrow by Aybige from <a href="https://thenounproject.com/browse/icons/term/arrow/" target="_blank" title="Arrow Icons">Noun Project</a> -->
 
 <head>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
 		href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500;600&family=Zen+Dots&display=swap"
 		rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
-
 	<script>
 		$('.js-input').keyup(function () {
 			if ($(this).val()) {
@@ -21,7 +18,12 @@
 				$(this).removeClass('not-empty');
 			}
 		});
+
+
 	</script>
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
+
 	<title>Wolfram Beeta</title>
 </head>
 
@@ -30,7 +32,9 @@
 		<div class="header">
 			<img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
 			<div class="brand_title">
-				<a href="/" style="text-decoration: none;"><h2 id="brand_name">Wolfram <br> Beeta</h2></a>
+				<a href="/" style="text-decoration: none;">
+					<h2 id="brand_name">Wolfram <br> Beeta</h2>
+				</a>
 			</div>
 			<navbar>
 				<ul class="navbar-menu -material">
@@ -39,10 +43,6 @@
 					<li class="item" href="#contact"><a class="link" href="#contact">Contact</a></li>
 				</ul>
 			</navbar>
-			<!-- <div class="menu-toggle">
-				<i class="bx bx-menu"></i>
-				<i class="bx bx-x"></i>
-			  </div> -->
 			<div class="login">
 				<button>Log in</button>
 			</div>
@@ -50,18 +50,17 @@
 
 		<section class="intro">
 			<h1 class="intro__title">
-				Lorem Ipsum
+				Equation Solver
 			</h1>
 			<p class="intro__subtitle">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed illum odit voluptates laborum temporibus
-				dolor.
+				Get the answers you need with Wolfram Beeta - the ultimate equation solver.
 			</p>
-			<a href="{{ url_for('solve') }}" class="button">Get Started</a>
-			<img class="intro__illustration" src="{{ url_for('static', filename='images/homeimg.svg') }}" alt="" />
+			<a href="{{ url_for('solve') }}" class="button">Start Solving</a>
+			<video class="intro__illustration" width="700" height="400" autoplay loop muted>
+				<source src="{{ url_for('static', filename='images/home.mp4') }}" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
 		</section>
-
-
-		<!-- </section> -->
 	</section>
 	<section id="docs">
 		<h1 class="text-blk team-head-text">How to Use?</h1>
@@ -71,12 +70,11 @@
 					<div class="number-box">
 						<span>01</span>
 					</div>
-					<h2><span class="small">Lorem</span> Ipsum</h2>
+					<h2><span class="small">Start</span>Solving</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt
-						doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>Click on the 'Start Solving' button to start solving equations with Wolfram Beeta!</p>
+					<img src="{{ url_for('static', filename='images/sone.png') }}">			
 				</div>
 			</div>
 
@@ -85,54 +83,62 @@
 					<div class="number-box">
 						<span>02</span>
 					</div>
-					<h2><span class="small">Lorem</span> Ipsum</h2>
+					<h2><span class="small">Choose</span> Equations</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt
-						doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>Click the solver of your choice!</p>
+					<img src="{{ url_for('static', filename='images/stwo.png') }}" alt="Graphic">
 				</div>
 			</div>
 
 			<div class="demo-card demo-card--step3">
 				<div class="head">
 					<div class="number-box">
-						<span>03</span>
+						<span>Linear</span>
 					</div>
-					<h2><span class="small">Lorem</span> Ipsum</h2>
+					<h2><span class="small">How to</span> Solve?</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt
-						doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p> - Enter the number of variables.<br> 
+						- Enter the coefficients of your choice separated by commas. <br>
+						- Enter the constants of your choice also separated by commas. <br>
+						- Follow the same steps for the Non-linear solver.
+					</p>
+					<img src="{{ url_for('static', filename='images/slin.png') }}" alt="Graphic">
 				</div>
 			</div>
 
 			<div class="demo-card demo-card--step4">
 				<div class="head">
 					<div class="number-box">
-						<span>04</span>
+						<span>ODE</span>
 					</div>
-					<h2><span class="small">Lorem</span> Ipsum</h2>
+					<h2><span class="small">How to</span> Solve?</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt
-						doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>
+						- Enter the coefficients of your choice separated by commas. <br>
+						- Depending on number of initial conditions, enter three conditions separated by commas. <br>
+						- The first number of the condition will be the order of function. <br>
+						- The second number will be the value of the x. <br>
+						- The third number will be the constant value of the initial condition. <br>
+						- Repeat this for the number of initial conditions.
+					</p>
+					<img src="{{ url_for('static', filename='images/sode.png') }}" alt="Graphic">
 				</div>
 			</div>
 
 			<div class="demo-card demo-card--step5">
 				<div class="head">
 					<div class="number-box">
-						<span>05</span>
+						<span>PDE</span>
 					</div>
-					<h2><span class="small">Lorem</span> Ipsum</h2>
+					<h2><span class="small">How to</span> Solve?</h2>
 				</div>
 				<div class="body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta reiciendis deserunt
-						doloribus consequatur, laudantium odio dolorum laboriosam.</p>
-					<img src="http://placehold.it/1000x500" alt="Graphic">
+					<p>	Enter the coefficients of your choice separated by commas and click solve! <br>
+					</p>
+					<img src="{{ url_for('static', filename='images/spde.png') }}" alt="Graphic">
 				</div>
 			</div>
 
@@ -153,217 +159,105 @@
 				<div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
 					<div class="card">
 						<div class="team-image-wrapper">
-							<img class="team-member-image"
-								src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert1.png">
+							<img class="team-member-image" src="{{ url_for('static', filename='images/ollie.jpg') }}">
 						</div>
 						<p class="text-blk name">
-							John Doe
+							Oliver Edmonds
 						</p>
-						<p class="text-blk position">
+						<!-- <p class="text-blk position">
 							CEO
-						</p>
+						</p> -->
 						<p class="text-blk feature-text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Initial MVP backend design, user input and displaying equations.
 						</p>
-						<div class="social-icons">
-							<a href="https://www.twitter.com" target="_blank">
-								<img class="twitter-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon.svg">
-							</a>
-							<a href="https://www.facebook.com" target="_blank">
-								<img class="facebook-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon-1.svg">
-							</a>
-						</div>
 					</div>
 				</div>
 				<div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
 					<div class="card">
 						<div class="team-image-wrapper">
-							<img class="team-member-image"
-								src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert2.png">
+							<img class="team-member-image" src="{{ url_for('static', filename='images/kunj.jpg') }}">
 						</div>
 						<p class="text-blk name">
-							John Doe
+							Kunj Dhola
 						</p>
-						<p class="text-blk position">
-							CEO
-						</p>
+
 						<p class="text-blk feature-text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Initial MVP frontend design, home-page design and UI.
 						</p>
-						<div class="social-icons">
-							<a href="https://www.twitter.com" target="_blank">
-								<img class="twitter-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon.svg">
-							</a>
-							<a href="https://www.facebook.com" target="_blank">
-								<img class="facebook-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon-1.svg">
-							</a>
-						</div>
 					</div>
 				</div>
 				<div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
 					<div class="card">
 						<div class="team-image-wrapper">
-							<img class="team-member-image"
-								src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ET7.14.png">
+							<img class="team-member-image" src="{{ url_for('static', filename='images/geom.jpg') }}">
 						</div>
 						<p class="text-blk name">
-							John Doe
+							Sourabh Roy
 						</p>
-						<p class="text-blk position">
-							CEO
-						</p>
+
 						<p class="text-blk feature-text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Designed the ODE, PDE and Non Linear classes.
 						</p>
-						<div class="social-icons">
-							<a href="https://www.twitter.com" target="_blank">
-								<img class="twitter-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon.svg">
-							</a>
-							<a href="https://www.facebook.com" target="_blank">
-								<img class="facebook-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon-1.svg">
-							</a>
-						</div>
+
 					</div>
 				</div>
 				<div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
 					<div class="card">
 						<div class="team-image-wrapper">
-							<img class="team-member-image"
-								src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ET7.15.png">
+							<img class="team-member-image" src="{{ url_for('static', filename='images/abbas.jpg') }}">
 						</div>
 						<p class="text-blk name">
-							John Doe
+							Abbas Sakauloo
 						</p>
-						<p class="text-blk position">
-							CEO
-						</p>
+
 						<p class="text-blk feature-text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Results pages for linear, non-linear and PDE.
 						</p>
-						<div class="social-icons">
-							<a href="https://www.twitter.com" target="_blank">
-								<img class="twitter-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon.svg">
-							</a>
-							<a href="https://www.facebook.com" target="_blank">
-								<img class="facebook-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon-1.svg">
-							</a>
-						</div>
+
 					</div>
 				</div>
 				<div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
 					<div class="card">
 						<div class="team-image-wrapper">
-							<img class="team-member-image"
-								src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert2.png">
+							<img class="team-member-image" src="{{ url_for('static', filename='images/malik.png') }}">
 						</div>
 						<p class="text-blk name">
-							John Doe
+							Malik Hassen
 						</p>
-						<p class="text-blk position">
-							CEO
-						</p>
+
 						<p class="text-blk feature-text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Results pages for linear, ODE and responsiveness.
+
 						</p>
-						<div class="social-icons">
-							<a href="https://www.twitter.com" target="_blank">
-								<img class="twitter-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon.svg">
-							</a>
-							<a href="https://www.facebook.com" target="_blank">
-								<img class="facebook-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon-1.svg">
-							</a>
-						</div>
+
 					</div>
 				</div>
 				<div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
 					<div class="card">
 						<div class="team-image-wrapper">
-							<img class="team-member-image"
-								src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ET7.14.png">
+							<img class="team-member-image" src="{{ url_for('static', filename='images/duk.jpg') }}">
 						</div>
 						<p class="text-blk name">
-							John Doe
+							Jerry Bard
 						</p>
-						<p class="text-blk position">
-							CEO
-						</p>
+
 						<p class="text-blk feature-text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Coded the script for solving the linear systems
 						</p>
-						<div class="social-icons">
-							<a href="https://www.twitter.com" target="_blank">
-								<img class="twitter-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon.svg">
-							</a>
-							<a href="https://www.facebook.com" target="_blank">
-								<img class="facebook-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon-1.svg">
-							</a>
-						</div>
+
 					</div>
 				</div>
 				<div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
 					<div class="card">
 						<div class="team-image-wrapper">
-							<img class="team-member-image"
-								src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ET7.15.png">
+							<img class="team-member-image" src="{{ url_for('static', filename='images/vraj.jpg') }}">
 						</div>
 						<p class="text-blk name">
-							John Doe
-						</p>
-						<p class="text-blk position">
-							CEO
+							Vraj Patel
 						</p>
 						<p class="text-blk feature-text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						</p>
-						<div class="social-icons">
-							<a href="https://www.twitter.com" target="_blank">
-								<img class="twitter-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon.svg">
-							</a>
-							<a href="https://www.facebook.com" target="_blank">
-								<img class="facebook-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon-1.svg">
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="responsive-cell-block wk-desk-3 wk-ipadp-3 wk-tab-6 wk-mobile-12 card-container">
-					<div class="card">
-						<div class="team-image-wrapper">
-							<img class="team-member-image"
-								src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert1.png">
-						</div>
-						<p class="text-blk name">
-							John Doe
-						</p>
-						<p class="text-blk position">
-							CEO
-						</p>
-						<p class="text-blk feature-text">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						</p>
-						<div class="social-icons">
-							<a href="https://www.twitter.com" target="_blank">
-								<img class="twitter-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon.svg">
-							</a>
-							<a href="https://www.facebook.com" target="_blank">
-								<img class="facebook-icon"
-									src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/Icon-1.svg">
-							</a>
-						</div>
+							Worked with Sourabh to merge the classes and conducted testing to ensure their proper
+							functionality</p>
 					</div>
 				</div>
 			</div>

@@ -658,7 +658,10 @@ navbar ul li a {
     #docs .demo-card .body {
       height: 315px;
     }
+
   }
+    
+  
   #docs .demo-card .body p {
     font-size: 14px;
     line-height: 18px;
@@ -1150,3 +1153,6 @@ navbar ul li a {
 .note .link:hover {
   text-decoration: underline;
 }
+
+
+

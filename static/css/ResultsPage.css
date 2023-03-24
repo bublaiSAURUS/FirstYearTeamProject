@@ -227,9 +227,9 @@ navbar ul li a {
     font-family: "Montserrat";
     text-align: center;
     color: black;
-    font-size: 1.5em;
+    font-size: 1em;
     letter-spacing: 1px;
-    line-height: 0.4em;
+    line-height: 0.6em;
    
 
 
@@ -259,9 +259,9 @@ navbar ul li a {
     font-family: "Montserrat";
     text-align: center;
     color: black;
-    font-size: 1.5em;
+    font-size: 1em;
     letter-spacing: 1px;
-    line-height: 0.4em;
+    line-height: 0.6em;
     /* margin-right: 10em; */
 
 }

@@ -125,6 +125,7 @@ def ODESolve():
     resp.set_cookie('solution',solution)
     print(solution)
     return resp
+
 @app.route('/PDE',methods = ['POST','GET'])
 def PDE():
     resp = make_response(render_template('PDE.html'))

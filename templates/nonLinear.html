@@ -46,30 +46,34 @@
 
 		function readInput() {
 			var variablesList = []
-			for (var i = 1; i <= document.getElementById("variables").value; i++) {
+			var numberOfVariables = parseInt(document.getElementById("variables").value);
+			for (var i = 1; i <= numberOfVariables; i++) {
 				var coefficients = document.getElementById("variable" + i).value
 				variablesList.push(coefficients.split(","))
 			}
 			var constantsList = document.getElementById("constants").value.split(",")
 			document.getElementById("solve").style.display = "inline";
-			var variableNames = ["x", "y", "z", "a", "b", "c"]
-			for (var i = 0; i < document.getElementById("variables").value; i++) {
+			var variableNames = ["x", "y", "z"]
+			for (var i = 0; i < numberOfVariables; i++) {
 				var equation = ""
-				for (var j = 0; j < document.getElementById("variables").value; j++) {
-					if (variablesList[i][2*j] != 0) {
-						if (variablesList[i][2*j] == 1) {
+				for (var j = 0; j < numberOfVariables; j++) {
+					if (variablesList[i][j] != 0) {
+						if (variablesList[i][j] == 1) {
 							equation += variableNames[j] + "<sup>2</sup> + "
 						}
 						else {
-							equation += variablesList[i][2*j] + variableNames[j] + "<sup>2</sup> + "
+							equation += variablesList[i][j] + variableNames[j] + "<sup>2</sup> + "
 						}
 					}
-					if (variablesList[i][2*j+1] != 0) {
-						if (variablesList[i][2*j+1] == 1) {
+				}
+
+				for (var j = 0; j < numberOfVariables; j++) {
+					if (variablesList[i][j + numberOfVariables] != 0) {
+						if (variablesList[i][j + numberOfVariables] == 1) {
 							equation += variableNames[j] + " + "
 						}
 						else {
-							equation += variablesList[i][2*j+1] + variableNames[j] + " + "
+							equation += variablesList[i][j + numberOfVariables] + variableNames[j] + " + "
 						}
 					}
 				}
@@ -79,7 +83,7 @@
 				document.getElementById("equation" + i).style.display = "inline";
 			}
 			var convertedVariables = ""
-			for (var i = 0; i < document.getElementById("variables").value * 2; i++) {
+			for (var i = 0; i < document.getElementById("variables").value; i++) {
 				convertedVariables += variablesList[i] + "&"
 			}
 			convertedVariables = convertedVariables.slice(0, -1)
@@ -137,7 +141,7 @@
 			<input style="display: none;" type="text" id="variable1" name="variable1">
 			<label style="display: none;color: white;" for="variable2" id="variable2_l"> <br><br> Enter equation 2 coefficients:</label>
 			<input style="display: none;" type="text" id="variable2" name="variable2">
-			<label style="display: none;color: white;" for="variable3" id="variable3_l"> <br><br> Enter equation 2 coefficients:</label>
+			<label style="display: none;color: white;" for="variable3" id="variable3_l"> <br><br> Enter equation 3 coefficients:</label>
 			<input style="display: none;" type="text" id="variable3" name="variable3">
 			<label style="display: none;color: white;" for="constants" id="constants_l"> <br><br> Enter constants:</label>
 			<input style="display: none;" type="text" id="constants" name="constants">

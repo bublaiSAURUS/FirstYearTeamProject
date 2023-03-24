@@ -159,7 +159,7 @@ def PDESolve():
         w = t
     s = w[:7] + "=" + w[9:]
     resp.set_cookie('variables', variables)
-    resp.set_cookie('solution',s.replace(",",";"))
+    resp.set_cookie('solution',s.replace(",","|"))
     print(s.replace(",",";"))
     return resp
 if __name__ == '__main__':

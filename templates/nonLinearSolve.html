@@ -1,28 +1,227 @@
-<!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/myStyles.css') }}">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
-    <title>Wolfram Beeta</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ResultsPage.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+		href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500;600&family=Zen+Dots&display=swap"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+
+   
+    <title>Results</title>
+
 </head>
-    <body>
+
+
+<body>
+      <section id="results_page">
         <div class="header">
-            <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
-            <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
-        </div>
-        <navbar>
-            <ul>
-                <li><a  href="/">Home</a></li>
-                <li><a class="active" href="solve">Solve</a></li>
-                <li><a href="docs">Docs</a></li>
+          <img id="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="website logo">
+          <div class="m6_name">
+            <a href="/" style="text-decoration: none;"><h2 id="brand_name">Wolfram <br> Beeta</h2></a>
+          </div>
+
+          <!-- <label class="hamburger-menu">
+            <input type="checkbox">
+          </label> -->
+
+
+          <navbar>
+            <ul class="navbar-menu -material">
+                <li class="item"><a class="link" href="{{ url_for('index') + '#home'}}">Home</a></li>
+                <li class="item"><a class="link" href="{{ url_for('index') + '#about'}}">About us</a></li>
+                <li class="item"><a class="link" href="{{ url_for('index') + '#contact'}}">Contact</a></li>
             </ul>
-        </navbar>
-        <main>
-            <p> hello there</p>
-        </main>
-    </body>
+
+           
+            </ul>
+          </navbar>
+          <!-- <div class="menu-toggle">
+            <i class="bx bx-menu"></i>
+            <i class="bx bx-x"></i>
+            </div> -->
+          
+        </div>
+      </section>
+      <section id="main">
+        <div class="your_equation">
+          <p>&nbsp;&nbsp;&nbsp;Your Non-Linear Equation</p>
+        </div>
+        <div class="equation_box">
+          <div class="content">
+            
+            <p style="color: black;" id=equation0> </p>
+            <p style="color: black;" id=equation1> </p>
+            <p style="color: black;" id=equation2> </p>
+            <p style="color: black;" id=equation3> </p>
+            <p style="color: black;" id=equation4> </p>
+            <p style="color: black;" id=equation5> </p>
+            <br>
+            <br>
+            <br>
+           
+
+            
+           
+           
+           
+          </div>
+         
+        </div>
+        <div class="result">
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;Your Solutions</p>
+        </div>
+        <div class="results_box">
+          <div class="contents">
+            <p style="color: black;" id=solution0> </p>
+            <p style="color: black;" id=solution1> </p>
+            <p style="color: black;" id=solution2> </p>
+            <p style="color: black;" id=solution3> </p>
+            <p style="color: black;" id=solution4> </p>
+            <p style="color: black;" id=solution5> </p>
+            <br>
+            <br>
+            <br>
+            
+           
+           
+           
+          </div>
+         
+        </div>
+      </section>
+    
+   
+    <!-- will need to change the src of the img when I work since the path is different on my laptop. Change it back when you do-->
+    <!-- <img id="logo" src="C:\Users\AbbasSakauloo\UniServerZ\www\m6_website\static\images\logo.png" alt="website logo">
+    <h2 id="brand_name">Wolfram <span style="color: #FFAA00;">Beeta</span></h2>
+
+    </div>
+    <div class="main">
+      <h1 style="color:#FFAA00;">Your Equation</h1>
+    </div> --> 
+    <script type="text/javascript">
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+    //   alert(getCookie("variables"));
+    //   alert(getCookie("constants"));
+    //   alert(getCookie("solution"));
+    //   alert(typeof(getCookie("solution")));
+    //   alert(typeof(getCookie("solution")));
+    //   alert(typeof(getCookie("solution")));
+      
+      // alert('hhs');
+      try{
+      var constantsList = getCookie("constants").replace(/['"]+/g, '').split('@')
+    //   alert(constantsList)
+      var variables = getCookie("variables").replace(/['"]+/g, '').split('&')
+    //   alert(variables)
+      var variablesList = []
+      var numberOfVariables = parseInt(variables.length);
+    //   alert(numberOfVariables)
+			for (var i = 0; i < numberOfVariables; i++) {
+				var coefficients = variables[i]
+                // alert(coefficients)
+				variablesList.push(coefficients.split('@'))
+			}
+      
+			var variableNames = ["x", "y", "z"]
+			for (var i = 0; i < numberOfVariables; i++) {
+				var equation = ""
+				for (var j = 0; j < numberOfVariables; j++) {
+					if (variablesList[i][j] != 0) {
+						if (variablesList[i][j] == 1) {
+							equation += variableNames[j] + "<sup>2</sup> + "
+						}
+						else {
+							equation += variablesList[i][j] + variableNames[j] + "<sup>2</sup> + "
+						}
+					}
+				}
+
+				for (var j = 0; j < numberOfVariables; j++) {
+					if (variablesList[i][j + numberOfVariables] != 0) {
+						if (variablesList[i][j + numberOfVariables] == 1) {
+							equation += variableNames[j] + " + "
+						}
+						else {
+							equation += variablesList[i][j + numberOfVariables] + variableNames[j] + " + "
+						}
+					}
+				}
+				equation = equation.slice(0, -2)
+				equation += "= " + constantsList[i]
+				document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
+				document.getElementById("equation" + i).style.display = "inline";
+			}
+          
+              }
+              catch(err){
+                alert(err.message)
+              }
+
+              var solutionsList = getCookie('solution').replace(/['"]+/g, '').split('&');
+              for(var i = 0; i<(solutionsList.length); i++){
+                solutionsList[i] = solutionsList[i].split('@')
+              }
+              
+              
+              
+              for (var i = 0; i < (solutionsList.length); i++) {
+                solution = ""
+                for (var j = 0; j < (variablesList.length); j++){
+                   solution += variableNames[j] + ' = ' + solutionsList[i][j] + ' , '     
+                }
+
+                
+                 document.getElementById("solution" + i).innerHTML =   "<br><br>" + solution.slice(0,-2)
+            //     document.getElementById("solution" + i).style.display = "inline"; 
+              }
+      
+      
+     
+        
+    
+        //  alert('hello')
+       
+
+       
+      
+      
+      // document.getElementById("solve").style.display = "inline";
+    
+      // var convertedVariables = ""
+      // for (var i = 0; i < getCookie("variables").value; i++) {
+      //   convertedVariables += variablesList[i] + "&"
+      // }
+      // convertedVariables = convertedVariables.slice(0, -1)
+      // try{
+      //         createCookie("variables", convertedVariables)
+      //   createCookie("constants", constantsList)
+      //     }
+      //     catch(err){
+      //       alert(err.message)
+      //     }
+      // return false
+        // }
+     </script>
+    
+
+</body>
 </html>

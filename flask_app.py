@@ -49,12 +49,12 @@ def nonLinear():
 @app.route('/nonLinearSolve',methods = ['POST', 'GET'])
 def nonLinearSolve():
     resp = make_response(render_template('nonLinearSolve.html'))
-    variables = request.cookies.get('variables')
-    constants = request.cookies.get('constants')
+    variables = request.cookies.get('variables').replace(",","@")
+    constants = request.cookies.get('constants').replace(",","@")
     variableList = variables.split("&")
-    constantsList = constants.split(",")
+    constantsList = constants.split("@")
     for i in range(len(variableList)):
-        variableList[i] = variableList[i].split(",")
+        variableList[i] = variableList[i].split("@")
         for j in range(len(variableList[i])):
             variableList[i][j] = float(variableList[i][j])
         constantsList[i] = float(constantsList[i])
@@ -72,8 +72,8 @@ def nonLinearSolve():
         for i in range(len(variableList)):
             functionList.append(sp.Eq(variableList[i][0]*x**2+variableList[i][1]*x,constantsList[i]))
         solution = sp.solve(functionList,(x))
-    print('&'.join(str(x) for x in solution))
-    resp.set_cookie('solution','&'.join(str(x) for x in solution))
+    print('&'.join(str(x) for x in solution).replace(",","@").replace("(","").replace(")",""))
+    resp.set_cookie('solution','&'.join(str(x) for x in solution).replace(",","@").replace("(","").replace(")",""))
     resp.set_cookie('variables', variables)
     resp.set_cookie('constants', constants)
     return resp
@@ -86,16 +86,16 @@ def ODE():
 @app.route('/ODESolve',methods = ['POST', 'GET'])
 def ODESolve():
     resp = make_response(render_template('ODESolve.html'))
-    coefficients = request.cookies.get('coefficients')
-    initialConditions = request.cookies.get('initialConditions')
+    coefficients = request.cookies.get('coefficients').replace(",","@")
+    initialConditions = request.cookies.get('initialConditions').replace(",","@")
     initialConditionsList = initialConditions.split('&')
     initialConditionsDict = {}
     for initialCondition in initialConditionsList:
-        values = initialCondition.split(",")
+        values = initialCondition.split("@")
         for i in range(len(values)):
             values[i] = float(values[i])
         initialConditionsDict[values[0]] = values[1:]
-    coefficientsList = coefficients.split(",")
+    coefficientsList = coefficients.split("@")
     for i in range(len(coefficientsList)):
         coefficientsList[i] = float(coefficientsList[i])
     x = sp.Symbol("x")
@@ -158,8 +158,8 @@ def PDESolve():
         w = t
     s = w[:7] + "=" + w[9:]
     resp.set_cookie('variables', variables)
-    resp.set_cookie('solution',s)
-    print(s)
+    resp.set_cookie('solution',s.replace(",",";"))
+    print(s.replace(",",";"))
     return resp
 if __name__ == '__main__':
     app.run(debug=True)

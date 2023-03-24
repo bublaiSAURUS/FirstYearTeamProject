@@ -39,14 +39,12 @@
             <i class="bx bx-menu"></i>
             <i class="bx bx-x"></i>
             </div> -->
-          <div class="login">
-            <button>Log in</button>
-          </div>
+          
         </div>
       </section>
       <section id="main">
         <div class="your_equation">
-          <p>      Your Non-Linear Equation</p>
+          <p>&nbsp;&nbsp;&nbsp;Your Non-Linear Equation</p>
         </div>
         <div class="equation_box">
           <div class="content">
@@ -74,7 +72,6 @@
         </div>
         <div class="results_box">
           <div class="contents">
-            
             <p style="color: black;" id=solution0> </p>
             <p style="color: black;" id=solution1> </p>
             <p style="color: black;" id=solution2> </p>
@@ -118,21 +115,28 @@
         }
         return "";
       }
-      alert(getCookie("variables"));
-      alert(getCookie("constants"));
-      alert(getCookie("solution"));
+    //   alert(getCookie("variables"));
+    //   alert(getCookie("constants"));
+    //   alert(getCookie("solution"));
+    //   alert(typeof(getCookie("solution")));
+    //   alert(typeof(getCookie("solution")));
+    //   alert(typeof(getCookie("solution")));
       
       // alert('hhs');
       try{
-        var constantsList = getCookie("constants").replace(/['"]+/g, '').split('@')
+      var constantsList = getCookie("constants").replace(/['"]+/g, '').split('@')
+    //   alert(constantsList)
       var variables = getCookie("variables").replace(/['"]+/g, '').split('&')
+    //   alert(variables)
       var variablesList = []
       var numberOfVariables = parseInt(variables.length);
-			for (var i = 1; i <= numberOfVariables; i++) {
+    //   alert(numberOfVariables)
+			for (var i = 0; i < numberOfVariables; i++) {
 				var coefficients = variables[i]
-				variablesList.push(coefficients.split("@"))
+                // alert(coefficients)
+				variablesList.push(coefficients.split('@'))
 			}
-			
+      
 			var variableNames = ["x", "y", "z"]
 			for (var i = 0; i < numberOfVariables; i++) {
 				var equation = ""
@@ -168,37 +172,27 @@
                 alert(err.message)
               }
 
+              var solutionsList = getCookie('solution').replace(/['"]+/g, '').split('&');
+              for(var i = 0; i<(solutionsList.length); i++){
+                solutionsList[i] = solutionsList[i].split('@')
+              }
+              
+              
+              
+              for (var i = 0; i < (solutionsList.length); i++) {
+                solution = ""
+                for (var j = 0; j < (variablesList.length); j++){
+                   solution += variableNames[j] + ' = ' + solutionsList[i][j] + ' , '     
+                }
+
+                
+                 document.getElementById("solution" + i).innerHTML =   "<br><br>" + solution.slice(0,-2)
+            //     document.getElementById("solution" + i).style.display = "inline"; 
+              }
       
       
-      // alert(variablesList)
-    //   for (var i = 0; i < (variablesList.length); i++) {
-    //     variablesList[i] = variablesList[i].split('@')
-    //   }
-    //    var variableNames = ["x", "y", "z", "a", "b", "c"]
-    //    for (var i = 0; i < (variablesList.length); i++) {
-    //     var equation = ""
-    //     for (var j = 0; j < (variablesList.length); j++) {
-    //       if (variablesList[i][j] != 0) {
-    //         if (variablesList[i][j] == 1) {
-    //           equation += variableNames[j] + " + "
-    //         }
-    //         else {
-    //           equation += variablesList[i][j] + variableNames[j] + " + "
-    //         }
-    //       }
-    //     }
-    //     equation = equation.slice(0, -2)
-    //     equation += "= " + constantsList[i]
+     
         
-        // document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
-        // document.getElementById("equation" + i).style.display = "inline";
-        try{
-          document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
-          document.getElementById("equation" + i).style.display = "inline";   
-              }
-              catch(err){
-                alert(err.message)
-              }
     
         //  alert('hello')
        

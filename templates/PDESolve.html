@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+  <link
+		href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@500;600&family=Zen+Dots&display=swap"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
+
    
     <title>Results</title>
 
@@ -44,7 +48,7 @@
       </section>
       <section id="main">
         <div class="your_equation">
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Partial Differential Equation</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your PDE</p>
         </div>
         <div class="equation_box">
           <div class="content">
@@ -64,7 +68,7 @@
          
         </div>
         <div class="result">
-          <p>Your Solutions</p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;Your Solutions</p>
         </div>
         <div class="results_box">
           <div class="contents">
@@ -107,14 +111,14 @@
         }
         return "";
       }
-      alert(getCookie("variables"));
+    //   alert(getCookie("variables"));
       // alert(getCookie("constants"));
-      alert(getCookie("solution"));
+    //   alert(getCookie("solution"));
       
       
       try{
        var variablesList = getCookie("variables").replace(/['"]+/g, '').split('&')
-       alert(variablesList)
+    //    alert(variablesList)
 
         var equation = ""
         equation += variablesList[0] + " f(x;y) + " + variablesList[1] + " d/dx(f(x;y)) + " + variablesList[2] + " d/dy(f(x;y)) = 0";

@@ -46,9 +46,9 @@
 				<i class="bx bx-menu"></i>
 				<i class="bx bx-x"></i>
 			  </div> -->
-            <div class="login">
+            <!-- <div class="login">
                 <button>Log in</button>
-            </div>
+            </div> -->
         </div>
     </section>
     <section id="body">
@@ -57,7 +57,7 @@
                 <div class="card"><img class="card__img" src="{{ url_for('static',filename='images/linear.svg' ) }}"
                         alt="Linear">
                     <div class="card__content">
-                        <h1 class="card__header">Linear Equations</h1>
+                        <h1 class="card__header">Linear System</h1>
                         <p class="card__text">A linear equation is an algebraic equation of the form y=mx+b. involving
                             only a constant and a first-order (linear) term, where m is the slope and b is the
                             y-intercept. </p>
@@ -70,8 +70,8 @@
                 <div class="card"><img class="card__img" src="{{ url_for('static',filename='images/nlinear.svg' ) }}"
                         alt="Non-linear">
                     <div class="card__content">
-                        <h1 class="card__header">Non-linear Equations</h1>
-                        <p class="card__text">A non-linear equation is such which does not form a straight line. It
+                        <h1 class="card__header">Polynomial system</h1>
+                        <p class="card__text">A polynomial equation is such which does not form a straight line. It
                             looks like a curve in a graph and has a variable slope value.</p>
                         <a href="{{ url_for('nonLinear') }}" style="text-decoration: none;"><button class="card__btn">Solve<span> <span>&rarr;</span></button></a>
                     </div>
@@ -93,7 +93,7 @@
                     <div class="card__content">
                         <h1 class="card__header">PDEs</h1>
                         <p class="card__text">A partial differential equation (PDE) is an equation which computes a function between various partial derivatives of a multivariable function.</p>
-                        <a href="{{ url_for('PDE') }}" style="text-decoration: none;"><button class="card__btn">Solve <span>&rarr;</span></button></a>
+                        <button class="card__btn">Coming soon... <!--<span>&rarr;</span>--></button>
                     </div>
                 </div>
             </div>

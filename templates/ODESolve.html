@@ -144,8 +144,12 @@
 
     //    var solutionsList = getCookie('solution').replace(/['"]+/g, '').split('@');
     //    for (var i = 0; i < (solutionsList.length); i++) {
-        
-        document.getElementById("solution" + i).innerHTML =   "<br><br>" + getCookie("solution").replace(/['"]+/g, '')
+        document.getElementById("solution" + i).innerHTML = ""
+        solution = getCookie("solution").replace(/['"]+/g, '').split(" ")
+        for (var j = 0; j < solution.length;j++){
+          document.getElementById("solution" + i).innerHTML +=   "<br><br>" + solution[j]
+        }
+        // document.getElementById("solution" + i).innerHTML =   "<br><br>" + getCookie("solution").replace(/['"]+/g, '')
         document.getElementById("solution" + i).style.display = "inline"; 
     //   }
       }

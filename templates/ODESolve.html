@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato&family=Zen+Dots&display=swap" rel="stylesheet">
-   
+
     <title>Results</title>
 
 </head>
@@ -26,7 +26,7 @@
                 <li class="item"><a class="link" href="{{ url_for('index') + '#contact'}}">Contact</a></li>
             </ul>
 
-           
+
             </ul>
           </navbar>
       </section>
@@ -46,14 +46,14 @@
             <br>
             <br>
           </div>
-         
+
         </div>
         <div class="result">
           <p>Your Solutions</p>
         </div>
         <div class="results_box">
           <div class="contents">
-            
+
             <p style="color: black;" id=solution0> </p>
             <p style="color: black;" id=solution1> </p>
             <p style="color: black;" id=solution2> </p>
@@ -62,9 +62,9 @@
             <p style="color: black;" id=solution5> </p>
             <br>
             <br>
-            <br>      
+            <br>
           </div>
-         
+
         </div>
       </section>
     <script type="text/javascript">
@@ -82,7 +82,7 @@
           }
         }
         return "";
-        
+
       }
     //   alert("hh")
       try {
@@ -106,7 +106,7 @@
 
             equation += "(" + initialConditionsList[i][1] + ") = " +initialConditionsList[i][2]
             document.getElementById("equation" + i).innerHTML =   "<br><br>" + equation
-            document.getElementById("equation" + i).style.display = "inline";  
+            document.getElementById("equation" + i).style.display = "inline";
           }
         // alert("hiii")
         equation = ""
@@ -115,7 +115,7 @@
                 equation += " d<sup>2</sup>x/dy<sup>2</sup> + "
 						}
 						else {
-							equation += coefficientsList[0] + " d<sup>2</sup>x/dy<sup>2</sup> + "
+							equation += coefficientsList[0] + " dx<sup>2</sup>/d<sup>2</sup>y + "
 						}
 					}
 				if (coefficientsList[1] != 0) {
@@ -139,8 +139,8 @@
 				document.getElementById("equation" + initialConditionsList.length).innerHTML =   "<br><br>" + equation
 				document.getElementById("equation" + initialConditionsList.length).style.display = "inline";
 
-        
-                
+
+
 
     //    var solutionsList = getCookie('solution').replace(/['"]+/g, '').split('@');
     //    for (var i = 0; i < (solutionsList.length); i++) {
@@ -150,15 +150,15 @@
           document.getElementById("solution" + i).innerHTML +=   "<br><br>" + solution[j]
         }
         // document.getElementById("solution" + i).innerHTML =   "<br><br>" + getCookie("solution").replace(/['"]+/g, '')
-        document.getElementById("solution" + i).style.display = "inline"; 
+        document.getElementById("solution" + i).style.display = "inline";
     //   }
       }
       catch (err){
         alert(err.message)
       }
-      
+
      </script>
-    
+
 
 </body>
 </html>

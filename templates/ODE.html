@@ -23,7 +23,7 @@
 
 	<script type="text/javascript">
 		function updateScreen() {
-			try{ 
+			try{
 				for (var i = 1; i <= 2; i++) {
 					document.getElementById("initialConditions" + i).style.display = "none";
 					document.getElementById("initialConditions" + i + "_l").style.display = "none";
@@ -69,7 +69,7 @@
 				equation = "";
 				if (coefficientsList[0] != 0) {
 						if (coefficientsList[0] == 1) {
-							equation += " d<sup>2</sup>x/dy<sup>2</sup> + "
+							equation += " dx<sup>2</sup>/d<sup>2</sup>y + "
 						}
 						else {
 							equation += coefficientsList[0] + " d<sup>2</sup>x/dy<sup>2</sup> + "
